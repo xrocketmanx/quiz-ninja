@@ -1,0 +1,25 @@
+@color: #7f7f7f; //temporary
+@ref-color: #2eb3ee;
+
+.breadcrumb {
+  li {
+    display: inline-block;
+
+    &:after {
+      content: '|';
+      color: @color;
+      padding-left: 0.25em;
+    }
+    &:last-child:after {
+      display: none;
+    }
+    &.active {
+      color: @color;
+    }
+  }
+
+  a {
+    text-decoration: none;
+    color: @ref-color;
+  }
+}
