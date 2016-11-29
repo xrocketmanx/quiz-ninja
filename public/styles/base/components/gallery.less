@@ -1,8 +1,23 @@
 .gallery {
   .image {
     padding: 0 .5em;
-    margin-left: 0;
-    margin-right: 0;
+    margin: 15px 0;
     text-align: center;
+
+    img {
+      display: block;
+      width: 100%;
+      cursor: pointer;
+    }
+
+    .caption {
+      padding: 10px;
+      background: #eee;
+      color: darken(#eee, 40%);
+    }
+
+    &:nth-child(4n) {
+      clear: both;
+    }
   }
 }
