@@ -1,7 +1,8 @@
 var gulp     = require('gulp'),
     del      = require('del'),
     uglify   = require('gulp-uglifyjs'),
-    cleancss = require('gulp-clean-css');
+    cleancss = require('gulp-clean-css'),
+    less     = require('gulp-less');
 
 var paths = (function() {
     var base = "public/";
@@ -41,11 +42,17 @@ var paths = (function() {
 })();
 
 //TASKS
+gulp.task('less', function() {
+    return gulp.src(paths.get('styles') + '*.less')
+        .pipe(less())
+        .pipe(gulp.dest(paths.get('styles')));
+});
+
 gulp.task('clean', function() {
     return del.sync(paths.get('build'));
 });
 
-gulp.task('build', ['clean'], function() {
+gulp.task('build', ['clean', 'less'], function() {
     var js = gulp.src(paths.get('scripts') + '*.js')
         .pipe(uglify())
         .pipe(gulp.dest(paths.get('build') + 'scripts/'));
@@ -57,3 +64,9 @@ gulp.task('build', ['clean'], function() {
     var img = gulp.src(paths.get('img') + '**/*')
         .pipe(gulp.dest(paths.get('build') + 'img/'));
 });
+
+gulp.task('watch', ['less'], function() {
+    gulp.watch(paths.get('styles') + '**/*.less', ['less']);
+});
+
+gulp.task('default', ['watch']);
