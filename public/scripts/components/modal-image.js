@@ -1,16 +1,32 @@
-//requires jQuery
-var modal = {
-    bindImage: function(selector) {
-        var $images = $(selector);
-        var $modalImage = $('.modal-image');
-
-        $images.on('click', function() {
-            $modalImage.find('img').attr('src', $(this).attr('src'));
-            $modalImage.find('.caption').text($(this).siblings('.caption').text());
-            $modalImage.show();
-        });
-        $modalImage.on('click', function() {
-            $(this).fadeOut(50);
-        });
+var modal = (function() {
+    function addEvent(element, type, handler) {
+        if (element.addEventListener) {
+            element.addEventListener(type, handler, false);
+        } else {
+            element.attachEvent('on' + type, function() {
+                handler.apply(element, arguments);
+            });
+        }
     }
-};
+
+    return {
+        bindImages: function(selector) {
+            var images = document.querySelectorAll(selector);
+            var modalImage = document.querySelector('.modal-image');
+
+            Array.prototype.forEach.call(images, function(image) {
+                addEvent(image, 'click', imageClick);
+            });
+
+            addEvent(modalImage, 'click', function() {
+                this.style.display = 'none';
+            });
+
+            function imageClick() {
+                modalImage.querySelector('img').setAttribute('src', this.getAttribute('src'));
+                modalImage.querySelector('.caption').innerHTML = this.parentNode.querySelector('.caption').innerHTML;
+                modalImage.style.display = 'block';
+            }
+        }
+    };
+})();
