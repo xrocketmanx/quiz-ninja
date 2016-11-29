@@ -1,0 +1,31 @@
+@ref-color: #2eb3ee; //temporary
+.pagination {
+  display: inline-block;
+
+  li {
+    display: inline;
+
+    a {
+      float: left;
+      padding: 5px 10px;
+      text-decoration: none;
+      color: @ref-color;
+      border-right: 1px solid #eee;
+      border-top: 1px solid #eee;
+      border-bottom: 1px solid #eee;
+
+      &:hover, &.active {
+        background-color: #ddd;
+      }
+    }
+
+    &:first-child a {
+      border-left: 1px solid #eee;
+      .border-radius(5px, 0, 0, 5px);
+    }
+
+    &:last-child a {
+      .border-radius(0, 5px, 5px, 0);
+    }
+  }
+}
