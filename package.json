@@ -1,0 +1,19 @@
+{
+  "name": "quiz-ninja",
+  "version": "1.0.0",
+  "description": "Online testing app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xrocketmanx/quiz-ninja.git"
+  },
+  "author": "Alexander Amirov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xrocketmanx/quiz-ninja/issues"
+  },
+  "homepage": "https://github.com/xrocketmanx/quiz-ninja#readme"
+}
