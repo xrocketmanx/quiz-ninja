@@ -15,5 +15,11 @@
   "bugs": {
     "url": "https://github.com/xrocketmanx/quiz-ninja/issues"
   },
-  "homepage": "https://github.com/xrocketmanx/quiz-ninja#readme"
+  "homepage": "https://github.com/xrocketmanx/quiz-ninja#readme",
+  "devDependencies": {
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-clean-css": "^2.0.13",
+    "gulp-uglifyjs": "^0.6.2"
+  }
 }
