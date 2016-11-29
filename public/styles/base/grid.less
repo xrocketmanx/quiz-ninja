@@ -1,0 +1,43 @@
+@media-width: 768px;
+
+* {
+  box-sizing: border-box;
+}
+
+[class^="col-"] {
+  float: left;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.container {
+  max-width: 960px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media only screen and (min-width: (@media-width + 1)) {
+  .mobile {
+    display: none;
+  }
+  .create-grid(12);
+}
+
+@media only screen and (max-width: @media-width) {
+  .desktop {
+    display: none;
+  }
+  .create-grid(12, ~'-s');
+}
+
+//loop that creates grid of @n columns
+.create-grid(@n, @pref: ~'', @i: @n) when(@i > 0) {
+  .col@{pref}-@{i} {
+    width: 100% * @i / @n;
+  }
+  .create-grid(@n, @pref, @i - 1);
+}
