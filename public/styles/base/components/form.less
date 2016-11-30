@@ -1,0 +1,63 @@
+.btn-group:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.btn-group [class*="btn-"] {
+  float: left;
+  border: none;
+  margin: 0;
+  border-right: 1px solid @light-grey;
+  border-top: 1px solid @light-grey;
+  border-bottom: 1px solid @light-grey;
+
+  &:first-child {
+    border-left: 1px solid @light-grey;
+    .border-radius(5px, 0, 0, 5px);
+  }
+
+  &:last-child {
+    .border-radius(0, 5px, 5px, 0);
+  }
+}
+
+.btn(@color, @hover-color) {
+  display: inline-block;
+  margin: 5px 5px 0 0;
+  padding: 10px 15px;
+  font-size: 0.83em;
+  background: none;
+  color: @color;
+  border: 1px solid @light-grey;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  text-align: center;
+  transition: background .2s, color .2s;
+
+  &:hover {
+    background: @color;
+    color: @hover-color;
+    cursor: pointer;
+  }
+
+  &:active {
+    transform: translateY(1px);
+  }
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.btn-primary {
+  .btn(@primary, @light-grey);
+}
+
+.btn-success {
+  .btn(@success, @light-grey);
+}
+
+.btn-danger {
+  .btn(@danger, @light-grey);
+}
