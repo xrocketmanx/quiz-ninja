@@ -1,0 +1,93 @@
+@media only screen and (min-width: (@media-width + 1)) {
+  .carousel {
+    overflow: hidden;
+    position: relative;
+
+    .box {
+      position: absolute;
+      width: 100%;
+      opacity: 0;
+      transition: left .7s ease-out, opacity .7s ease-out;
+    }
+
+    .right {
+      left: 100%;
+    }
+
+    .left {
+      z-index: 1;
+      left: -100%;
+      opacity: 0;
+    }
+
+    .active {
+      z-index: 2;
+      left: 0;
+      opacity: 1;
+    }
+
+    @controls-bg: #333;
+    @controls-arrow: #eee;
+    @controls-size: 30px;
+    @arrow-height: 18px;
+    @arrow-width: 10px;
+
+    .controls {
+      z-index: 3;
+      position: absolute;
+      .border-radius(50%);
+      background-color: darken(@controls-bg, 40%);
+      background-color: fade(@controls-bg, 60%);
+      width: @controls-size;
+      height: @controls-size;
+      top: 50%;
+      margin-top: -@controls-size / 2;
+      cursor: pointer;
+
+      &:before, &:after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: 50%;
+        margin-top: -@arrow-height / 2;
+      }
+
+      &:hover {
+        background-color: fade(@controls-bg, 90%);
+      }
+
+      &:hover:before, &:hover:after {
+        border-right-color: @controls-arrow;
+        border-left-color: @controls-arrow;
+        border-right-color: fade(@controls-arrow, 70%);
+        border-left-color: fade(@controls-arrow, 70%);
+      }
+    }
+
+    .control-prev {
+      left: 10px;
+    }
+
+    .control-next {
+      right: 10px;
+    }
+
+    .control-prev:before {
+      border-top: @arrow-height / 2 solid transparent;
+      border-bottom: @arrow-height / 2 solid transparent;
+      border-right: @arrow-width solid lighten(@controls-bg, 30%);
+      border-right: @arrow-width solid fade(@controls-bg, 70%);
+      left: 50%;
+      margin-left: -@arrow-width + 3;
+    }
+
+    .control-next:after {
+      border-top: @arrow-height / 2 solid transparent;
+      border-bottom: @arrow-height / 2 solid transparent;
+      border-left: @arrow-width solid lighten(@controls-bg, 30%);
+      border-left: @arrow-width solid fade(@controls-bg, 70%);
+      right: 50%;
+      margin-right: -@arrow-width + 3;
+    }
+  }
+}

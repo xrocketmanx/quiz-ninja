@@ -1,3 +1,4 @@
+"use strict";
 function Carousel(carousel) {
     var self = this;
     var ACTIVE_CLASS = 'active';
