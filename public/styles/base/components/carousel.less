@@ -6,8 +6,8 @@
     .box {
       position: absolute;
       width: 100%;
-      opacity: 0;
-      transition: left .7s ease-out, opacity .7s ease-out;
+      .opacity(0);
+      .transition(left .7s ease-out, opacity .7s ease-out;);
     }
 
     .right {
@@ -17,13 +17,13 @@
     .left {
       z-index: 1;
       left: -100%;
-      opacity: 0;
+      .opacity(0);
     }
 
     .active {
       z-index: 2;
       left: 0;
-      opacity: 1;
+      .opacity(1);
     }
 
     @controls-bg: #333;
