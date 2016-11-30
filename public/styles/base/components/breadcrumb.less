@@ -1,17 +1,14 @@
-@color: #7f7f7f; //temporary
-@ref-color: #2eb3ee;
-
 .breadcrumb {
   li {
     display: inline;
 
     &:after {
       content: '|';
-      color: @color;
+      color: @grey;
       padding-left: 0.25em;
     }
     &.active {
-      color: @color;
+      color: @grey;
       &:after {
         display: none;
       }

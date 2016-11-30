@@ -1,9 +1,28 @@
+//colors
+@black: #000;
+@dark-grey: lighten(@black, 20%);
+@grey: lighten(@black, 49%);
+@light-grey: lighten(@black, 93.5%);
+@ref-color: #2eb3ee;
+@success: #5cb85c;
+@danger: #d9534f;
+@primary: #428bca;
+
+//fonts
+@sans-serif: "Open Sans", Arial, sans-serif;
+
 //contains all 'musthave' base imports
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700&subset=cyrillic');
 @import "normalize";
 @import "utils";
 @import "grid";
 
 //responsive media
-img, video {
+img, video, iframe {
   max-width: 100%;
+}
+
+html {
+  font-family: @sans-serif;
+  color: @dark-grey;
 }
