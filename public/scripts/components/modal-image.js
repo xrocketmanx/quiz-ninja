@@ -1,24 +1,14 @@
 var modal = (function() {
-    function addEvent(element, type, handler) {
-        if (element.addEventListener) {
-            element.addEventListener(type, handler, false);
-        } else {
-            element.attachEvent('on' + type, function() {
-                handler.apply(element, arguments);
-            });
-        }
-    }
-
     return {
         bindImages: function(selector) {
             var images = document.querySelectorAll(selector);
             var modalImage = document.querySelector('.modal-image');
 
             Array.prototype.forEach.call(images, function(image) {
-                addEvent(image, 'click', imageClick);
+                image.addEventListener('click', imageClick);
             });
 
-            addEvent(modalImage, 'click', function() {
+            modalImage.addEventListener('click', function() {
                 this.style.display = 'none';
             });
 
