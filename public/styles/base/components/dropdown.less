@@ -1,0 +1,15 @@
+.dropdown {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  .box-shadow(1px 1px 2px 0 @dark-grey);
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
