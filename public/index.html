@@ -46,7 +46,7 @@
         <figcaption class="caption">Alexander Amirov</figcaption>
         <img src="https://pp.vk.me/c636818/v636818343/34bac/Ew_a2-bLfB4.jpg">
     </figure>
-    <figure class="image col-4">
+    <figure class="image clear col-4">
         <figcaption class="caption">Alexander Amirov</figcaption>
         <img src="https://pp.vk.me/c636818/v636818343/34bac/Ew_a2-bLfB4.jpg">
     </figure>
@@ -58,14 +58,43 @@
         <figcaption class="caption">Alexander Amirov</figcaption>
         <img src="https://pp.vk.me/c636818/v636818343/34bac/Ew_a2-bLfB4.jpg">
     </figure>
+</div>
+<div class="carousel col-12 row">
+    <section class="box offer active col-s-12">
+        <img src="https://pp.vk.me/c636818/v636818343/34bac/Ew_a2-bLfB4.jpg" alt="student">
+        <p>
+            Дистанційне навчання будь де і будь коли абсолютно безкоштовно.
+            Ви можете підписуватись на необмежену кількість курсів та відслідковувати прогрес їх
+            проходження.
+        </p>
+    </section>
+    <section class="box offer col-s-12">
+        <img src="https://pp.vk.me/c636818/v636818343/34bac/Ew_a2-bLfB4.jpg" alt="computer">
+        <p>
+            Інтуітивно зрозумілий редактор для створення будь-яких курсів з дружнім інтерфейсом.
+            Кожен викладач матиме змогу користуватися цим редактором.
+        </p>
+    </section>
+    <section class="box offer col-s-12">
+        <img src="https://pp.vk.me/c636818/v636818343/34bac/Ew_a2-bLfB4.jpg" alt="calculation">
+        <p>
+            Перевіряйте та оцінюйте свої знання за допомогою онлайн тестування.
+            Тести можуть входити до складу будь-якого курсу. Їх проходження підвищує ваш рейтинг.
+        </p>
+    </section>
+    <div class="controls control-prev"></div>
+    <div class="controls control-next"></div>
 </div>
 <div class="modal-image">
     <img src="#">
     <span class="caption"></span>
 </div>
 <script src="scripts/components/modal-image.js" type="text/javascript"></script>
+<script src="scripts/components/carousel.js" type="text/javascript"></script>
 <script type="text/javascript">
     modal.bindImages('.gallery .image img');
+    var carousel = new Carousel(document.querySelector('.carousel'));
+    carousel.start(5000, 'forward');
 </script>
 </body>
 </html>
