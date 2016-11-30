@@ -58,18 +58,18 @@
         };
     }
     //EventTarget
-    if (!EventTarget.prototype.addEventListener) {
-        EventTarget.prototype.addEventListener = function(type, handler) {
-            this.attachEvent('on' + type, handler);
+    if (!window.addEventListener) {
+        Element.prototype.addEventListener = function(type, handler) {
+            this.attachEvent('on' + type, handler.bind(this));
         };
     }
-    if (!EventTarget.prototype.removeEventListener) {
-        EventTarget.prototype.removeEventListener = function(type, handler) {
+    if (!window.removeEventListener) {
+        Element.prototype.removeEventListener = function(type, handler) {
             this.detachEvent('on' + type, handler);
         };
     }
     //DOM Elements
-    if (!document.body.classList) {
+    if (!("classList" in document.createElement("_"))) {
         Object.defineProperty(Element.prototype, 'classList', {
             configurable: true,
             enumerable: false,
