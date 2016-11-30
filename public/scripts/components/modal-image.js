@@ -1,3 +1,4 @@
+"use strict";
 var modal = (function() {
     return {
         bindImages: function(selector) {
