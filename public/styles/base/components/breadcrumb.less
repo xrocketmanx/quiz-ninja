@@ -10,11 +10,11 @@
       color: @color;
       padding-left: 0.25em;
     }
-    &:last-child:after {
-      display: none;
-    }
     &.active {
       color: @color;
+      &:after {
+        display: none;
+      }
     }
   }
 
