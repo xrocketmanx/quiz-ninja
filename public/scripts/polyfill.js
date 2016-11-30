@@ -53,7 +53,7 @@ if(!Array.prototype.filter) {
         for (var i = 0; i < this.length; i++) {
             if (func(this[i])) result.push(this[i]);
         }
-        return initial;
+        return result;
     };
 }
 //EventTarget
