@@ -28,6 +28,15 @@ html {
   color: @dark-grey;
 }
 
+.link {
+  color: @ref-color;
+  text-decoration: none;
+
+  &:hover {
+    color: darken(@ref-color, 15%);
+  }
+}
+
 //layout
 body, html {
   height: 100%;

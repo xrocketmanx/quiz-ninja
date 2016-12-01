@@ -1,2 +1,64 @@
 @import "base/main";
 @import "base/components/breadcrumb";
+@import "base/components/carousel";
+
+@vertical-margin: 15px;
+
+.carousel {
+  margin: @vertical-margin 0;
+  height: 500px;
+
+  @media only screen and (max-width: @media-width) {
+    height: auto;
+  }
+}
+
+.panel {
+  padding: 5px 75px;
+  height: 100%;
+  background-size: cover;
+
+  .title {
+    text-transform: uppercase;
+    font-size: 2em;
+    letter-spacing: 0.1em;
+    font-weight: normal;
+  }
+
+  .description {
+    width: 60%;
+    font-size: 1.1em;
+  }
+}
+
+.panel-edu {
+  background-image: url('../img/education.jpg');
+}
+
+.panel-contribute {
+  background-image: url('../img/life.jpg');
+  color: @light-grey;
+}
+
+.panel-start {
+  background-image: url('../img/step.jpg');
+  background-position: 0 -23px;
+  color: @light-grey;
+}
+
+.info {
+  background: @light-grey;
+  margin: @vertical-margin 0;
+  padding: 15px 75px;
+  border-left: 2px solid @dark-grey;
+
+  .title {
+    text-transform: uppercase;
+  }
+}
+
+@media only screen and (max-width: @media-width) {
+  .panel, .info {
+    padding-left: 15px;
+  }
+}
