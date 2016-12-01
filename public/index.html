@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="tests,quiz,online">
+    <meta name="author" content="Alexander Amirov">
 
     <link rel="stylesheet" type="text/css" href="styles/index.css">
 
@@ -18,99 +20,38 @@
     <![endif]-->
 </head>
 <body>
-<ul class="breadcrumb">
-    <li><a href="#">Home</a></li>
-    <li><a href="#">Library</a></li>
-    <li class="active">Book</li>
-</ul>
-<ul class="pagination">
-    <li><a href="#">&laquo;</a></li>
-    <li><a href="#">1</a></li>
-    <li><a href="#">2</a></li>
-    <li><a href="#" class="active">3</a></li>
-    <li><a href="#">4</a></li>
-    <li><a href="#">5</a></li>
-    <li class="active"><a href="#">&raquo;</a></li>
-</ul>
-<div class="dropdown">
-    <span>Dropdown</span>
-    <div class="dropdown-content">
-        Hello my lovely world!
-    </div>
-</div>
-<div>
-    <div class="btn-group">
-        <button class="btn-primary">Prev</button>
-        <button class="btn-primary">Current</button>
-        <button class="btn-primary">Next</button>
-    </div>
-    <button class="btn-primary">Create</button>
-    <button class="btn-success">Update</button>
-    <button class="btn-danger">Delete</button>
-</div>
-<div class="gallery row">
-    <figure class="image col-4">
-        <figcaption class="caption">Alexander Amirov</figcaption>
-        <img src="https://pp.vk.me/c636818/v636818343/34bac/Ew_a2-bLfB4.jpg">
-    </figure>
-    <figure class="image col-4">
-        <figcaption class="caption">Alexander Amirov</figcaption>
-        <figcaption class="caption">Alexander Amirov</figcaption>
-        <img src="https://pp.vk.me/c636818/v636818343/34bac/Ew_a2-bLfB4.jpg">
-    </figure>
-    <figure class="image col-4">
-        <figcaption class="caption">Alexander Amirov</figcaption>
-        <img src="https://pp.vk.me/c636818/v636818343/34bac/Ew_a2-bLfB4.jpg">
-    </figure>
-    <figure class="image clear col-4">
-        <figcaption class="caption">Alexander Amirov</figcaption>
-        <img src="https://pp.vk.me/c636818/v636818343/34bac/Ew_a2-bLfB4.jpg">
-    </figure>
-    <figure class="image col-4">
-        <figcaption class="caption">Alexander Amirov</figcaption>
-        <img src="https://pp.vk.me/c636818/v636818343/34bac/Ew_a2-bLfB4.jpg">
-    </figure>
-    <figure class="image col-4">
-        <figcaption class="caption">Alexander Amirov</figcaption>
-        <img src="https://pp.vk.me/c636818/v636818343/34bac/Ew_a2-bLfB4.jpg">
-    </figure>
-</div>
-<div class="carousel col-12 row">
-    <section class="box offer active col-s-12">
-        <img src="https://pp.vk.me/c636818/v636818343/34bac/Ew_a2-bLfB4.jpg" alt="student">
-        <p>
-            Дистанційне навчання будь де і будь коли абсолютно безкоштовно.
-            Ви можете підписуватись на необмежену кількість курсів та відслідковувати прогрес їх
-            проходження.
-        </p>
-    </section>
-    <section class="box offer col-s-12">
-        <img src="https://pp.vk.me/c636818/v636818343/34bac/Ew_a2-bLfB4.jpg" alt="computer">
-        <p>
-            Інтуітивно зрозумілий редактор для створення будь-яких курсів з дружнім інтерфейсом.
-            Кожен викладач матиме змогу користуватися цим редактором.
-        </p>
-    </section>
-    <section class="box offer col-s-12">
-        <img src="https://pp.vk.me/c636818/v636818343/34bac/Ew_a2-bLfB4.jpg" alt="calculation">
-        <p>
-            Перевіряйте та оцінюйте свої знання за допомогою онлайн тестування.
-            Тести можуть входити до складу будь-якого курсу. Їх проходження підвищує ваш рейтинг.
-        </p>
-    </section>
-    <div class="controls control-prev"></div>
-    <div class="controls control-next"></div>
-</div>
-<div class="modal-image">
-    <img src="#">
-    <span class="caption"></span>
-</div>
-<script src="scripts/components/modal-image.js" type="text/javascript"></script>
-<script src="scripts/components/carousel.js" type="text/javascript"></script>
-<script type="text/javascript">
-    modal.bindImages('.gallery .image img');
-    var carousel = new Carousel(document.querySelector('.carousel'));
-    carousel.start(5000, 'forward');
-</script>
+    <header class="main-header container row">
+        <div class="logo col-3 col-s-2">
+            <h1 class="desktop">
+                Quiz<span class="logo-ninja">Ninja</span>
+            </h1>
+            <h1 class="mobile">
+                Q<span class="logo-ninja">N</span>
+            </h1>
+        </div>
+        <nav class="main-nav col-9 col-s-10">
+            <ul class="menu row">
+                <li><a href="/">Home</a></li>
+                <li><a href="#">Quiz</a></li>
+                <li>
+                    <div class="dropdown">
+                        <span class="dropdown-title">Additional</span>
+                        <ul class="dropdown-content sub-menu">
+                            <li><a href="#">Contacts</a></li>
+                            <li><a href="#">About Us</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <footer class="main-footer container row">
+        <ul class="social col-5 row">
+            <li><a href="https://vk.com/id13941343"></a></li>
+            <li><a href="https://www.facebook.com/rocketpowered.amirov"></a></li>
+            <li><a href="https://plus.google.com/116132982972660532691"></a></li>
+        </ul>
+        <small class="copyright">&copy; Alexander Amirov</small>
+    </footer>
 </body>
 </html>
