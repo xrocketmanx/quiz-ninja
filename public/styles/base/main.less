@@ -22,9 +22,36 @@ img, video, iframe {
   max-width: 100%;
 }
 
+//global styles
 html {
   font-family: @sans-serif;
   color: @dark-grey;
+}
+
+//layout
+body, html {
+  height: 100%;
+}
+
+.main-header, .main-footer {
+  position: absolute;
+  left: 0;
+  right: 0;
+}
+
+.main-header {
+  top: 0;
+}
+
+.main-footer {
+  bottom: 0;
+}
+
+.main-content {
+  overflow: auto;
+  padding-top: 66px;
+  padding-bottom: 62px;
+  height: 100%;
 }
 
 //modules imports
