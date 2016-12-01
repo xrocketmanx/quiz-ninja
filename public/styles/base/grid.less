@@ -15,9 +15,8 @@
 }
 
 .container {
-  max-width: 960px;
-  margin-left: auto;
-  margin-right: auto;
+  padding-left: 5%;
+  padding-right: 5%;
 }
 
 @media only screen and (min-width: (@media-width + 1)) {
@@ -30,6 +29,10 @@
 @media only screen and (max-width: @media-width) {
   .desktop {
     display: none;
+  }
+  .container {
+    padding-left: 2%;
+    padding-right: 2%;
   }
   .create-grid(12, ~'-s');
 }
