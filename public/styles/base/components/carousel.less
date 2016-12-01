@@ -27,21 +27,15 @@
     }
 
     @controls-bg: @dark-grey;
-    @controls-arrow: @light-grey;
-    @controls-size: 30px;
-    @arrow-height: 18px;
-    @arrow-width: 10px;
+    @arrow-height: 27px;
+    @arrow-width: 15px;
 
     .controls {
       z-index: 3;
       position: absolute;
-      .border-radius(50%);
-      background-color: darken(@controls-bg, 40%);
-      background-color: fade(@controls-bg, 60%);
-      width: @controls-size;
-      height: @controls-size;
-      top: 50%;
-      margin-top: -@controls-size / 2;
+      .horizontal-gradient(fade(@controls-bg, 50%), fade(@controls-bg, 5%));
+      width: 50px;
+      height: 100%;
       cursor: pointer;
 
       &:before, &:after {
@@ -53,23 +47,23 @@
       }
 
       &:hover {
-        background-color: fade(@controls-bg, 90%);
+        .horizontal-gradient(fade(@controls-bg, 70%), fade(@controls-bg, 20%));
       }
 
       &:hover:before, &:hover:after {
-        border-right-color: @controls-arrow;
-        border-left-color: @controls-arrow;
-        border-right-color: fade(@controls-arrow, 70%);
-        border-left-color: fade(@controls-arrow, 70%);
+        border-right-color: @ref-color;
+        border-left-color: @ref-color;
+        border-right-color: fade(@ref-color, 70%);
+        border-left-color: fade(@ref-color, 70%);
       }
     }
 
     .control-prev {
-      left: 10px;
+      left: 0;
     }
 
     .control-next {
-      right: 10px;
+      right: 0;
     }
 
     .control-prev:before {
