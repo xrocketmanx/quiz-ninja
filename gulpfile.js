@@ -2,7 +2,8 @@ var gulp     = require('gulp'),
     del      = require('del'),
     uglify   = require('gulp-uglifyjs'),
     cleancss = require('gulp-clean-css'),
-    less     = require('gulp-less');
+    less     = require('gulp-less'),
+    plumber  = require('gulp-plumber');
 
 var paths = (function() {
     var base = "public/";
@@ -44,6 +45,10 @@ var paths = (function() {
 //TASKS
 gulp.task('less', function() {
     return gulp.src(paths.get('styles') + '*.less')
+        .pipe(plumber(function(error) {
+            console.log(error.message);
+            this.emit('end');
+        }))
         .pipe(less())
         .pipe(gulp.dest(paths.get('styles')));
 });
