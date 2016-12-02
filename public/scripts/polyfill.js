@@ -11,6 +11,14 @@
             };
         };
     }
+    //Objects
+    if (!Object.create) {
+        Object.create = function(proto) {
+            var F = new Function();
+            F.prototype = proto;
+            return new F;
+        };
+    }
     //Arrays
     if(!Array.prototype.indexOf) {
         Array.prototype.indexOf = function(searchElement, fromIndex) {
