@@ -526,6 +526,10 @@ body,
 html {
   height: 100%;
 }
+body {
+  padding-top: 66px;
+  padding-bottom: 62px;
+}
 .main-header,
 .main-footer {
   position: absolute;
@@ -541,8 +545,6 @@ html {
 }
 .content-wrapper {
   overflow: auto;
-  padding-top: 66px;
-  padding-bottom: 62px;
   height: 100%;
 }
 .dropdown {
