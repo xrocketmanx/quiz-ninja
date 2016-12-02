@@ -1,0 +1,31 @@
+@import "base/main";
+@import "base/components/breadcrumb";
+
+.contact-info {
+  margin-top: 10px;
+  padding-left: 5px;
+  padding-right: 10px;
+  display: inline-block;
+  border: 1px solid @light-grey;
+  .box-shadow(2px 2px 3px 0 @dark-grey);
+
+  strong {
+    font-style: normal;
+  }
+}
+
+.map-title {
+  margin-bottom: .5em;
+}
+
+#map {
+  border: 1px solid @light-grey;
+  width: 50%;
+  height: 300px;
+  margin-bottom: 15px;
+  background-color: @light-grey;
+
+  @media only screen and (max-width: @media-width) {
+    width: 100%;
+  }
+}
