@@ -31,6 +31,7 @@
   color: @color;
   border: 1px solid @light-grey;
   text-transform: uppercase;
+  text-decoration: none;
   letter-spacing: .05em;
   text-align: center;
   transition: background .2s, color .2s;
@@ -60,4 +61,53 @@
 
 .btn-danger {
   .btn(@danger, @light-grey);
+}
+
+/*
+ * INPUTS
+ */
+.form {
+  padding: 10px 5px;
+  border: 1px solid @light-grey;
+  display: inline-block;
+}
+
+@input-border-color: @ref-color;
+.input, .textarea {
+  max-width: 100%;
+}
+
+.input-group {
+  display: inline-block;
+  margin: 0 5px;
+}
+
+.input {
+  color: @dark-grey;
+  border: 1px solid @input-border-color;
+
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 2px 0 @input-border-color;
+  }
+}
+
+.select {
+  color: @ref-color;
+}
+
+.search-input {
+  .border-radius(5px);
+  padding-left: 25px;
+  background: url("../img/search.png") no-repeat 5px center;
+}
+
+.order-ico {
+  display: inline-block;
+  width: 21px;
+  height: 21px;
+  background-image: url("../img/order.png");
+  background-size: cover;
+  cursor: pointer;
+  vertical-align: middle;
 }
