@@ -427,38 +427,110 @@ template {
   .col-12 {
     width: 100%;
   }
+  .push-r-12 {
+    margin-right: 100%;
+  }
+  .push-l-12 {
+    margin-left: 100%;
+  }
   .col-11 {
     width: 91.66666667%;
+  }
+  .push-r-11 {
+    margin-right: 91.66666667%;
+  }
+  .push-l-11 {
+    margin-left: 91.66666667%;
   }
   .col-10 {
     width: 83.33333333%;
   }
+  .push-r-10 {
+    margin-right: 83.33333333%;
+  }
+  .push-l-10 {
+    margin-left: 83.33333333%;
+  }
   .col-9 {
     width: 75%;
+  }
+  .push-r-9 {
+    margin-right: 75%;
+  }
+  .push-l-9 {
+    margin-left: 75%;
   }
   .col-8 {
     width: 66.66666667%;
   }
+  .push-r-8 {
+    margin-right: 66.66666667%;
+  }
+  .push-l-8 {
+    margin-left: 66.66666667%;
+  }
   .col-7 {
     width: 58.33333333%;
+  }
+  .push-r-7 {
+    margin-right: 58.33333333%;
+  }
+  .push-l-7 {
+    margin-left: 58.33333333%;
   }
   .col-6 {
     width: 50%;
   }
+  .push-r-6 {
+    margin-right: 50%;
+  }
+  .push-l-6 {
+    margin-left: 50%;
+  }
   .col-5 {
     width: 41.66666667%;
+  }
+  .push-r-5 {
+    margin-right: 41.66666667%;
+  }
+  .push-l-5 {
+    margin-left: 41.66666667%;
   }
   .col-4 {
     width: 33.33333333%;
   }
+  .push-r-4 {
+    margin-right: 33.33333333%;
+  }
+  .push-l-4 {
+    margin-left: 33.33333333%;
+  }
   .col-3 {
     width: 25%;
+  }
+  .push-r-3 {
+    margin-right: 25%;
+  }
+  .push-l-3 {
+    margin-left: 25%;
   }
   .col-2 {
     width: 16.66666667%;
   }
+  .push-r-2 {
+    margin-right: 16.66666667%;
+  }
+  .push-l-2 {
+    margin-left: 16.66666667%;
+  }
   .col-1 {
     width: 8.33333333%;
+  }
+  .push-r-1 {
+    margin-right: 8.33333333%;
+  }
+  .push-l-1 {
+    margin-left: 8.33333333%;
   }
 }
 @media only screen and (max-width: 768px) {
@@ -472,39 +544,114 @@ template {
   .col-s-12 {
     width: 100%;
   }
+  .push-r-s-12 {
+    margin-right: 100%;
+  }
+  .push-l-s-12 {
+    margin-left: 100%;
+  }
   .col-s-11 {
     width: 91.66666667%;
+  }
+  .push-r-s-11 {
+    margin-right: 91.66666667%;
+  }
+  .push-l-s-11 {
+    margin-left: 91.66666667%;
   }
   .col-s-10 {
     width: 83.33333333%;
   }
+  .push-r-s-10 {
+    margin-right: 83.33333333%;
+  }
+  .push-l-s-10 {
+    margin-left: 83.33333333%;
+  }
   .col-s-9 {
     width: 75%;
+  }
+  .push-r-s-9 {
+    margin-right: 75%;
+  }
+  .push-l-s-9 {
+    margin-left: 75%;
   }
   .col-s-8 {
     width: 66.66666667%;
   }
+  .push-r-s-8 {
+    margin-right: 66.66666667%;
+  }
+  .push-l-s-8 {
+    margin-left: 66.66666667%;
+  }
   .col-s-7 {
     width: 58.33333333%;
+  }
+  .push-r-s-7 {
+    margin-right: 58.33333333%;
+  }
+  .push-l-s-7 {
+    margin-left: 58.33333333%;
   }
   .col-s-6 {
     width: 50%;
   }
+  .push-r-s-6 {
+    margin-right: 50%;
+  }
+  .push-l-s-6 {
+    margin-left: 50%;
+  }
   .col-s-5 {
     width: 41.66666667%;
+  }
+  .push-r-s-5 {
+    margin-right: 41.66666667%;
+  }
+  .push-l-s-5 {
+    margin-left: 41.66666667%;
   }
   .col-s-4 {
     width: 33.33333333%;
   }
+  .push-r-s-4 {
+    margin-right: 33.33333333%;
+  }
+  .push-l-s-4 {
+    margin-left: 33.33333333%;
+  }
   .col-s-3 {
     width: 25%;
+  }
+  .push-r-s-3 {
+    margin-right: 25%;
+  }
+  .push-l-s-3 {
+    margin-left: 25%;
   }
   .col-s-2 {
     width: 16.66666667%;
   }
+  .push-r-s-2 {
+    margin-right: 16.66666667%;
+  }
+  .push-l-s-2 {
+    margin-left: 16.66666667%;
+  }
   .col-s-1 {
     width: 8.33333333%;
   }
+  .push-r-s-1 {
+    margin-right: 8.33333333%;
+  }
+  .push-l-s-1 {
+    margin-left: 8.33333333%;
+  }
+}
+.clear {
+  clear: both;
 }
 img,
 video,
@@ -680,6 +827,7 @@ body {
 }
 .pagination {
   display: inline-block;
+  padding-left: 0;
 }
 .pagination li {
   display: inline;
@@ -861,4 +1009,40 @@ body {
 }
 .order-ico {
   margin-left: 5px;
+}
+.like {
+  display: inline-block;
+  width: 24px;
+  height: 48px;
+  text-align: center;
+  font-size: 0.9em;
+}
+.like:before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 24px;
+  background: url("../img/like.png");
+}
+.quiz {
+  padding: 15px 0;
+  margin-top: 15px;
+  border-bottom: 2px solid #d5d5d5;
+}
+.quiz .quiz-header h2 {
+  float: left;
+  color: #428bca;
+  margin: 0;
+}
+.quiz .quiz-description {
+  border-left: 2px solid #428bca;
+  padding: 15px 5px;
+}
+.quiz a {
+  float: right;
+  margin: 0;
+}
+.pagination-container {
+  margin-top: 15px;
+  text-align: center;
 }
