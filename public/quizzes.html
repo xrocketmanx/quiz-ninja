@@ -13,6 +13,7 @@
 
     <link rel="stylesheet" type="text/css" href="styles/quizzes.css">
     <script defer src="scripts/ajax-util.js" type="text/javascript"></script>
+    <script defer src="scripts/paginator.js" type="text/javascript"></script>
     <script defer src="scripts/quizzes.js" type="text/javascript"></script>
 
     <!-- IE Support -->
@@ -56,14 +57,14 @@
     <ol class="breadcrumb">
         <li class="active">Quizzes</li>
     </ol>
-    <form class="form">
+    <form class="form" name="view-options">
         <div class="input-group">
             <label for="sort-field">sort by:</label>
             <select class="input" name="sort-field" id="sort-field">
                 <option value="name" selected>name</option>
-                <option value="rating">rating</option>
+                <option value="likes">rating</option>
             </select>
-            <input type="checkbox" name="order" id="order">
+            <input type="checkbox" name="order" value="desc" id="order">
             <label class="order-ico" for="order"></label>
         </div>
         <div class="input-group">
@@ -72,55 +73,17 @@
         </div>
     </form>
     <section class="quizzes-list row">
-        <article class="quiz col-6 col-s-12">
-            <header class="quiz-header">
-                <h2>Name</h2>
-                <a href="#">Likes: 0</a>
-            </header>
-            <p class="quiz-description">
-                Description about quiz
-            </p>
-            <a href="#" class="btn-primary">Go</a>
-        </article>
-        <article class="quiz col-6 col-s-12">
-            <header class="quiz-header">
-                <h2>Name</h2>
-                <a href="#">Likes: 0</a>
-            </header>
-            <p class="quiz-description">
-                Description about quiz
-            </p>
-            <a href="#" class="btn-primary">Go</a>
-        </article>
-        <article class="quiz col-6 col-s-12">
-            <header class="quiz-header">
-                <h2>Name</h2>
-                <a href="#">Likes: 0</a>
-            </header>
-            <p class="quiz-description">
-                Description about quiz
-            </p>
-            <a href="#" class="btn-primary">Go</a>
-        </article>
-        <article class="quiz col-6 col-s-12">
-            <header class="quiz-header">
-                <h2>Name</h2>
-                <a href="#">Likes: 0</a>
-            </header>
-            <p class="quiz-description">
-                Description about quiz
-            </p>
-            <a href="#" class="btn-primary">Go</a>
-        </article>
     </section>
-    <ol class="pagination">
-        <li><a href="#">&laquo;</a></li>
-        <li><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">&raquo;</a></li>
-    </ol>
+    <div class="pagination-container">
+        <ol class="pagination">
+            <li><a href="#">&laquo;</a></li>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">&raquo;</a></li>
+        </ol>
+    </div>
 </section>
 <footer class="main-footer container row">
     <ul class="social col-5 row">
