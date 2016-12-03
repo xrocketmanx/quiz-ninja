@@ -1,6 +1,8 @@
 //INIT
 var quizzesContainer = document.querySelector('.quizzes-list');
-var quizzesController = new QuizzesController(new Quizzes(ajaxUtil), new QuizzesView(quizzesContainer), new ViewOptions());
+var paginationContainer = document.querySelector('.pagination-container');
+var quizzesController = new QuizzesController(
+    new Quizzes(ajaxUtil), new QuizzesView(quizzesContainer, paginationContainer), new ViewOptions());
 quizzesController.load();
 
 /**
@@ -10,18 +12,28 @@ quizzesController.load();
  * @constructor
  */
 function QuizzesController(quizzesDB, quizzesView, viewOptions) {
+    var ITEMS_PER_PAGE = 10;
+
     this.renderQuizzes = function(options) {
         var quizzes = quizzesDB.getQuizzes(options);
-        return quizzesView.renderQuizzes(quizzes);
+        var paginator = new Paginator(quizzes, ITEMS_PER_PAGE);
+
+        var pagination = paginator.getPagination(function onClick() {
+            quizzesView.refreshPagination(paginator.getPagination(onClick));
+            quizzesView.renderQuizzes(paginator.getItems())
+        });
+
+        quizzesView.refreshPagination(pagination);
+        quizzesView.renderQuizzes(paginator.getItems());
     };
 
     this.load = function() {
         var self = this;
         quizzesDB.load(function() {
             self.renderQuizzes(viewOptions.getViewOptions());
-        });
-        viewOptions.onChange(function(options) {
-            self.renderQuizzes(options);
+            viewOptions.onChange(function(options) {
+                self.renderQuizzes(options);
+            });
         });
     };
 }
@@ -44,7 +56,9 @@ function Quizzes(ajax) {
             {id: 6, name: 'Python Advanced', likes: 17, description: 'Nice description of great quiz. This quiz is super and great. This quiz will help you to learn everything about this world.'},
             {id: 7, name: 'C#', likes: 13, description: 'Nice description of great quiz. This quiz is super and great. This quiz will help you to learn everything about this world.'},
             {id: 8, name: 'java script essentials', likes: 19, description: 'Nice description of great quiz. This quiz is super and great. This quiz will help you to learn everything about this world.'},
-            {id: 9, name: 'Ruby', likes: 8, description: 'Nice description of great quiz. This quiz is super and great. This quiz will help you to learn everything about this world.'}
+            {id: 9, name: 'Ruby', likes: 8, description: 'Nice description of great quiz. This quiz is super and great. This quiz will help you to learn everything about this world.'},
+            {id: 10, name: 'PHP', likes: 5, description: 'Nice description of great quiz. This quiz is super and great. This quiz will help you to learn everything about this world.'},
+            {id: 11, name: 'C++', likes: 17, description: 'Nice description of great quiz. This quiz is super and great. This quiz will help you to learn everything about this world.'}
         ];
         callback();
     };
@@ -113,9 +127,10 @@ function Quizzes(ajax) {
 /**
  * Renders Quizzes to container
  * @param container
+ * @param paginationContainer
  * @constructor
  */
-function QuizzesView(container) {
+function QuizzesView(container, paginationContainer) {
     var CLASS_NAMES = {
         quizElement: 'quiz col-5 col-s-12',
         quizHeader: 'quiz-header row',
@@ -135,6 +150,11 @@ function QuizzesView(container) {
             }
             container.appendChild(renderedQuiz);
         }
+    };
+
+    this.refreshPagination = function(pagination) {
+        paginationContainer.innerHTML = '';
+        paginationContainer.appendChild(pagination);
     };
 
     function renderQuiz(quiz) {
