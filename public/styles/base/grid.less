@@ -42,5 +42,15 @@
   .col@{pref}-@{i} {
     width: 100% * @i / @n;
   }
+  .push-r@{pref}-@{i} {
+    margin-right: 100% * @i / @n;
+  }
+  .push-l@{pref}-@{i} {
+    margin-left: 100% * @i / @n;
+  }
   .create-grid(@n, @pref, @i - 1);
+}
+
+.clear {
+  clear: both;
 }
