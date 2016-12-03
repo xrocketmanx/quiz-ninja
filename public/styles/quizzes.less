@@ -1,0 +1,16 @@
+@import "base/main";
+@import "base/components/breadcrumb";
+@import "base/components/pagination";
+@import "base/components/form";
+
+#order {
+  display: none;
+}
+
+#order:checked + .order-ico {
+  .transform(rotate(180deg));
+}
+
+.order-ico {
+  margin-left: 5px;
+}
