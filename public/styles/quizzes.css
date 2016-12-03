@@ -963,6 +963,11 @@ body {
   border: 1px solid #eeeeee;
   display: inline-block;
 }
+@media only screen and (max-width: 768px) {
+  .form {
+    display: block;
+  }
+}
 .input,
 .textarea {
   max-width: 100%;
@@ -970,6 +975,12 @@ body {
 .input-group {
   display: inline-block;
   margin: 0 5px;
+}
+@media only screen and (max-width: 768px) {
+  .input-group {
+    display: block;
+    margin-top: 10px;
+  }
 }
 .input {
   color: #333333;

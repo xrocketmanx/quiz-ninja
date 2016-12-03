@@ -70,6 +70,10 @@
   padding: 10px 5px;
   border: 1px solid @light-grey;
   display: inline-block;
+
+  @media only screen and (max-width: @media-width) {
+    display: block;
+  }
 }
 
 @input-border-color: @ref-color;
@@ -80,6 +84,11 @@
 .input-group {
   display: inline-block;
   margin: 0 5px;
+
+  @media only screen and (max-width: @media-width) {
+    display: block;
+    margin-top: 10px;
+  }
 }
 
 .input {
