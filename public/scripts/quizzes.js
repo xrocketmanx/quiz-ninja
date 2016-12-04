@@ -204,7 +204,7 @@
         function createButton(text, id) {
             var btn = document.createElement('a');
             btn.appendChild(document.createTextNode(text));
-            btn.setAttribute('href', 'quiz.html?id=' + id);
+            btn.setAttribute('href', 'quiz?id=' + id);
             btn.className = CLASS_NAMES.btn;
             return btn;
         }

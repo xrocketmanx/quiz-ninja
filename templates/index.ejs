@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Quiz ninja</title>
+    <meta name="description" content="Quiz ninja home page">
+    <link rel="stylesheet" type="text/css" href="/styles/index.css">
+
+    <%- include('head'); %>
+</head>
+<body>
+<%- include('header'); %>
+<section class="content-wrapper container row">
+    <ol class="breadcrumb">
+        <li class="active">Home</li>
+    </ol>
+    <section class="carousel row">
+        <section class="box panel panel-edu active col-12">
+            <h3 class="title">What is this?</h3>
+            <p class="description">
+                <strong>QuizNinja</strong> is a webapp with any kind of quizes.
+                Improve your skills in any of your hobbies: art, science, programming, languages.
+            </p>
+        </section>
+        <section class="box panel panel-start col-12">
+            <h3 class="title">Start your way</h3>
+            <p class="description">
+                Our webapp does not need any registration or other extra steps.
+                Just go to <a href="quizzes.html" class="link">Quiz</a> page and find any quiz that you can imagine.
+            </p>
+        </section>
+        <section class="box panel panel-contribute col-12">
+            <h3 class="title">Contribute</h3>
+            <p class="description">
+                If you are confident enough you can develop your own quiz.
+                Use our quiz designer that has very simple interface.
+            </p>
+        </section>
+        <div class="controls control-prev"></div>
+        <div class="controls control-next"></div>
+    </section>
+    <section class="info">
+        <h2 class="title">Quiz</h2>
+        <p class="description">
+            A quiz is a form of game or mind sport, in which the players (as individuals or in teams) attempt to answer
+            questions correctly. In some countries, a quiz is also a brief assessment used in education and similar
+            fields to measure growth in knowledge, abilities, and/or skills.
+            Quizzes are usually scored in points and many quizzes are designed to determine a winner from a group of
+            participants – usually the participant with the highest score.
+        </p>
+    </section>
+</section>
+<%- include('footer'); %>
+<script src="/scripts/components/carousel.js" type="text/javascript"></script>
+<script>
+    var carousel = new Carousel(document.querySelector('.carousel'));
+    carousel.start(15000, 'forward');
+</script>
+</body>
+</html>

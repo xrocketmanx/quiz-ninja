@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>About Us</title>
+    <meta name="description" content="Quiz ninja about us page with gallery">
+    <link rel="stylesheet" type="text/css" href="/styles/about.css">
+
+    <%- include('head'); %>
+</head>
+<body>
+<%- include('header'); %>
+<section class="content-wrapper container row">
+    <ol class="breadcrumb">
+        <li class="active">About Us</li>
+    </ol>
+    <p class="info">
+        We are <strong>programmers</strong> and we like to test our knowledge.
+        So we decided to create our web app where we can place quizzes for private purposes and test each other.
+        It has grown up into a project that contains all kind of quizzes in any topic.
+        We were inspired by interest of people to our site, so we make an ability for everyone to express himself
+        and create his own test in few steps.
+    </p>
+    <h2 class="gallery-title">Our team:</h2>
+    <section class="gallery row">
+        <figure class="image col-4">
+            <figcaption class="caption">Alexander Amirov (team leader)</figcaption>
+            <img src="/img/author.jpg" alt="author">
+        </figure>
+        <figure class="image col-4">
+            <figcaption class="caption">Yurii Dudkin (project manager)</figcaption>
+            <img src="/img/author.jpg" alt="author">
+        </figure>
+        <figure class="image col-4">
+            <figcaption class="caption">Antony Bondarenko (backend dev)</figcaption>
+            <img src="/img/author.jpg" alt="author">
+        </figure>
+        <figure class="image col-4 clear">
+            <figcaption class="caption">Olga Ocvharenko (web designer)</figcaption>
+            <img src="/img/author.jpg" alt="author">
+        </figure>
+        <figure class="image col-4">
+            <figcaption class="caption">Oleksii Baranichenko (system admin)</figcaption>
+            <img src="/img/author.jpg" alt="author">
+        </figure>
+        <figure class="image col-4">
+            <figcaption class="caption">Vitaliy Dlugoborskiy (db admin)</figcaption>
+            <img src="/img/author.jpg" alt="author">
+        </figure>
+    </section>
+</section>
+<%- include('footer'); %>
+<div class="modal-image">
+    <img src="#">
+    <span class="caption"></span>
+</div>
+<script src="/scripts/components/modal-image.js" type="text/javascript"></script>
+<script type="text/javascript">
+    modal.bindImages('.gallery .image img');
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Quiz</title>
+    <meta name="description" content="Quiz ninja list of all quizzes">
+
+    <link rel="stylesheet" type="text/css" href="/styles/quizzes.css">
+    <script defer src="/scripts/ajax-util.js" type="text/javascript"></script>
+    <script defer src="/scripts/paginator.js" type="text/javascript"></script>
+    <script defer src="/scripts/quizzes.js" type="text/javascript"></script>
+
+    <%- include('head'); %>
+</head>
+<body>
+<%- include('header'); %>
+<section class="content-wrapper container row">
+    <ol class="breadcrumb">
+        <li class="active">Quizzes</li>
+    </ol>
+    <form class="form" name="view-options">
+        <div class="input-group">
+            <label for="sort-field">sort by:</label>
+            <select class="input" name="sort-field" id="sort-field">
+                <option value="name" selected>name</option>
+                <option value="likes">rating</option>
+            </select>
+            <input type="checkbox" name="order" value="desc" id="order">
+            <label class="order-ico" for="order"></label>
+        </div>
+        <div class="input-group">
+            <label for="name-filter" style="display: none">Search:</label>
+            <input type="text" class="input search-input" name="name" id="name-filter" autocomplete="off">
+        </div>
+    </form>
+    <section class="quizzes-list row">
+    </section>
+    <div class="pagination-container">
+    </div>
+</section>
+<%- include('footer'); %>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Contacts</title>
+    <meta name="description" content="Quiz ninja contacts page">
+    <link rel="stylesheet" type="text/css" href="/styles/contacts.css">
+
+    <%- include('head'); %>
+</head>
+<body>
+<%- include('header'); %>
+<section class="content-wrapper container row">
+    <ol class="breadcrumb">
+        <li class="active">Contacts</li>
+    </ol>
+    <address class="contact-info">
+        <p><strong>Main Developer:</strong> Alexander Amirov</p>
+        <p><strong>Office:</strong> Ukraine, Kiev city, Polytechnic st, 6</p>
+        <p><strong>Email:</strong> xrocketmanx007@gmail.com</p>
+    </address>
+    <h2 class="map-title">Office location:</h2>
+    <div id="map"></div>
+</section>
+<%- include('footer'); %>
+<script type="text/javascript">
+    function initMap() {
+        var mapCanvas = document.getElementById('map');
+        var pos = {lat: 50.449, lng: 30.4652};
+        var mapOptions = {
+            center: pos,
+            zoom: 17
+        };
+        var map = new google.maps.Map(mapCanvas, mapOptions);
+        var marker = new google.maps.Marker({
+            position: pos,
+            map: map
+        });
+    }
+</script>
+<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAHcAJBoK3MpoeI-K8bhXH0Kz_PgY2vZ4U&callback=initMap"
+        type="text/javascript"></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Quiz</title>
+    <meta name="description" content="Quiz ninja quiz page with online testing">
+
+    <link rel="stylesheet" type="text/css" href="/styles/quiz.css">
+    <script defer src="/scripts/ajax-util.js" type="text/javascript"></script>
+    <script defer src="/scripts/components/quiz-utility.js" type="text/javascript"></script>
+    <script defer src="/scripts/quiz.js" type="text/javascript"></script>
+
+    <%- include('head'); %>
+</head>
+<body>
+<%- include('header'); %>
+<section class="content-wrapper container row">
+    <ol class="breadcrumb">
+        <li><a href="quizzes">Quizzes</a></li>
+        <li class="active"></li>
+    </ol>
+    <section id="quiz">
+        <button class="btn-primary" id="start">Start Quiz</button>
+        <form class="qu-form">
+            <header class="row">
+                <ul class="qu-nav col-10 col-s-12"></ul>
+                <span class="qu-timer col-2 col-s-12"></span>
+            </header>
+            <p class="qu-question"></p>
+            <div class="qu-options"></div>
+            <footer class="row">
+                <div class="btn-group btn-left">
+                    <span class="qu-btn-previous btn-primary">Previous</span>
+                    <span class="qu-btn-next btn-primary">Next</span>
+                    <span class="qu-btn-skip btn-primary">Skip</span>
+                </div>
+                <div class="btn-group btn-right">
+                    <span class="qu-btn-answer btn-success">Answer</span>
+                    <span class="qu-btn-end btn-danger">End</span>
+                </div>
+            </footer>
+        </form>
+    </section>
+</section>
+<%- include('footer'); %>
+</body>
+</html>
