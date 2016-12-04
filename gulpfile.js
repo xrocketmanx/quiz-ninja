@@ -3,6 +3,7 @@ var gulp     = require('gulp'),
     uglify   = require('gulp-uglifyjs'),
     cleancss = require('gulp-clean-css'),
     less     = require('gulp-less'),
+    imagemin = require('gulp-imagemin'),
     plumber  = require('gulp-plumber');
 
 var paths = (function() {
@@ -65,6 +66,7 @@ gulp.task('build', ['clean', 'less'], function() {
         .pipe(cleancss())
         .pipe(gulp.dest(paths.get('build') + 'styles/'));
     var img = gulp.src(paths.get('img') + '**/*')
+        .pipe(imagemin())
         .pipe(gulp.dest(paths.get('build') + 'img/'));
 });
 
