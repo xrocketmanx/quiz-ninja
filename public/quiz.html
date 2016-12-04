@@ -58,24 +58,27 @@
         <li><a href="quizzes.html">Quizzes</a></li>
         <li class="active"></li>
     </ol>
-    <section class="qu-form">
-        <header class="row">
-            <ul class="qu-nav col-10 col-s-12"></ul>
-            <span class="qu-timer col-2 col-s-12"></span>
-        </header>
-        <p class="qu-question"></p>
-        <div class="qu-options"></div>
-        <footer class="row">
-            <div class="btn-group btn-left">
-                <span class="qu-btn-previous btn-primary">Previous</span>
-                <span class="qu-btn-next btn-primary">Next</span>
-                <span class="qu-btn-skip btn-primary">Skip</span>
-            </div>
-            <div class="btn-group btn-right">
-                <span class="qu-btn-answer btn-success">Answer</span>
-                <span class="qu-btn-end btn-danger">End</span>
-            </div>
-        </footer>
+    <section id="quiz">
+        <button class="btn-primary" id="start">Start Quiz</button>
+        <form class="qu-form">
+            <header class="row">
+                <ul class="qu-nav col-10 col-s-12"></ul>
+                <span class="qu-timer col-2 col-s-12"></span>
+            </header>
+            <p class="qu-question"></p>
+            <div class="qu-options"></div>
+            <footer class="row">
+                <div class="btn-group btn-left">
+                    <span class="qu-btn-previous btn-primary">Previous</span>
+                    <span class="qu-btn-next btn-primary">Next</span>
+                    <span class="qu-btn-skip btn-primary">Skip</span>
+                </div>
+                <div class="btn-group btn-right">
+                    <span class="qu-btn-answer btn-success">Answer</span>
+                    <span class="qu-btn-end btn-danger">End</span>
+                </div>
+            </footer>
+        </form>
     </section>
 </section>
 <footer class="main-footer container row">

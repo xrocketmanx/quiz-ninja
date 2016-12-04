@@ -978,6 +978,13 @@ body {
   cursor: pointer;
   vertical-align: middle;
 }
+#start {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  margin-left: -58px;
+  margin-top: -18.5px;
+}
 .qu-form {
   max-width: 600px;
   margin: 15px auto;
@@ -1072,4 +1079,8 @@ body {
     margin-top: 15px;
     float: none;
   }
+}
+.quiz-result {
+  color: #428bca;
+  text-align: center;
 }
