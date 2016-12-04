@@ -26,6 +26,9 @@ function Carousel(carousel) {
     this.start = function(interval, direction) {
         interval = interval || 2000;
         direction = direction || 'forward';
+        check('interval', interval, 'number');
+        check('direction', direction, 'string');
+
         var func;
 
         if (direction === 'forward') func = this.moveNext.bind(this);
