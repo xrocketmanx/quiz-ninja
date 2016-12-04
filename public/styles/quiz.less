@@ -1,0 +1,101 @@
+@import "base/main";
+@import "base/components/breadcrumb";
+@import "base/components/form";
+
+.qu-form {
+  max-width: 600px;
+  margin: 15px auto;
+  padding: 15px;
+  border: 1px solid @grey;
+
+  .qu-nav {
+    overflow: hidden;
+    margin: 0;
+    padding-left: 0;
+    background: @grey;
+    .border-radius(5px 0 0 5px);
+
+    li {
+      display: inline-block;
+      padding: 10px 5px;
+      width: 10%;
+      text-align: center;
+      color: @ref-color;
+      cursor: pointer;
+      transition: background-color .3s;
+
+      &.active, &:hover {
+        background-color: darken(@grey, 15%);
+      }
+
+      &.answered {
+        background: @success;
+        color: @light-grey;
+
+        &.active, &:hover {
+          background-color: darken(@success, 15%);
+        }
+      }
+    }
+
+    @media only screen and (max-width: @media-width) {
+      .border-radius(0);
+    }
+  }
+
+  .qu-timer {
+    overflow: hidden;
+    padding: 10px 15px;
+    text-align: center;
+    color: @light-grey;
+    background-color: @success;
+    .border-radius(0 5px 5px 0);
+
+    @media only screen and (max-width: @media-width) {
+      .border-radius(0);
+    }
+  }
+
+  .qu-question {
+    margin: 25px 0;
+    padding-left: 5px;
+    border-left: 2px solid @light-grey;
+  }
+
+  .qu-options {
+    margin: 15px 0;
+
+    .qu-input-group {
+      padding: 15px 7px;
+      display: block;
+
+      label {
+        padding: 5px 10px;
+      }
+
+      input {
+        margin-right: 5px;
+      }
+
+      input:checked + label {
+        background-color: @success;
+        color: @light-grey;
+      }
+    }
+  }
+
+  .btn-left {
+    float: left;
+  }
+
+  .btn-right {
+    float: right;
+  }
+
+  @media only screen and (max-width: @media-width) {
+    .btn-right, .btn-left {
+      margin-top: 15px;
+      float: none;
+    }
+  }
+}
