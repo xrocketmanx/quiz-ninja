@@ -1,0 +1,310 @@
+[
+  {
+    "id": 1,
+    "name": "HTML",
+    "likes": 23,
+    "description": "Nice description of great quiz. This quiz is super and great. This quiz will help you to learn everything about this world.",
+    "time": 5,
+    "questions": [
+      {
+        "text": "Question 1",
+        "options": ["answer 1", "answer 2", "answer 3"],
+        "type": "multiple"
+      },
+      {
+        "text": "Question 2",
+        "options": ["answer 1", "answer 2", "answer 3", "answer 4"],
+        "type": "single"
+      },
+      {
+        "text": "Question 3",
+        "type": "field"
+      }
+    ],
+    "correctAnswers": {
+      "Question 1": ["answer 2", "answer 1"],
+      "Question 2": ["answer 3"],
+      "Question 3": ["answer"]
+    }
+  },
+  {
+    "id": 2,
+    "name": "JavaScript",
+    "likes": 15,
+    "description": "Nice description of great quiz. This quiz is super and great. This quiz will help you to learn everything about this world.",
+    "time": 5,
+    "questions": [
+      {
+        "text": "Question 1",
+        "options": ["answer 1", "answer 2", "answer 3"],
+        "type": "multiple"
+      },
+      {
+        "text": "Question 2",
+        "options": ["answer 1", "answer 2", "answer 3", "answer 4"],
+        "type": "single"
+      },
+      {
+        "text": "Question 3",
+        "type": "field"
+      }
+    ],
+    "correctAnswers": {
+      "Question 1": ["answer 2", "answer 1"],
+      "Question 2": ["answer 3"],
+      "Question 3": ["answer"]
+    }
+  },
+  {
+    "id": 3,
+    "name": "Python Basics",
+    "likes": 10,
+    "description": "Nice description of great quiz. This quiz is super and great. This quiz will help you to learn everything about this world.",
+    "time": 5,
+    "questions": [
+      {
+        "text": "Question 1",
+        "options": ["answer 1", "answer 2", "answer 3"],
+        "type": "multiple"
+      },
+      {
+        "text": "Question 2",
+        "options": ["answer 1", "answer 2", "answer 3", "answer 4"],
+        "type": "single"
+      },
+      {
+        "text": "Question 3",
+        "type": "field"
+      }
+    ],
+    "correctAnswers": {
+      "Question 1": ["answer 2", "answer 1"],
+      "Question 2": ["answer 3"],
+      "Question 3": ["answer"]
+    }
+  },
+  {
+    "id": 4,
+    "name": "Java",
+    "likes": 5,
+    "description": "Nice description of great quiz. This quiz is super and great. This quiz will help you to learn everything about this world.",
+    "time": 5,
+    "questions": [
+      {
+        "text": "Question 1",
+        "options": ["answer 1", "answer 2", "answer 3"],
+        "type": "multiple"
+      },
+      {
+        "text": "Question 2",
+        "options": ["answer 1", "answer 2", "answer 3", "answer 4"],
+        "type": "single"
+      },
+      {
+        "text": "Question 3",
+        "type": "field"
+      }
+    ],
+    "correctAnswers": {
+      "Question 1": ["answer 2", "answer 1"],
+      "Question 2": ["answer 3"],
+      "Question 3": ["answer"]
+    }
+  },
+  {
+    "id": 5,
+    "name": "Java Advanced",
+    "likes": 32,
+    "description": "Nice description of great quiz. This quiz is super and great. This quiz will help you to learn everything about this world.",
+    "time": 5,
+    "questions": [
+      {
+        "text": "Question 1",
+        "options": ["answer 1", "answer 2", "answer 3"],
+        "type": "multiple"
+      },
+      {
+        "text": "Question 2",
+        "options": ["answer 1", "answer 2", "answer 3", "answer 4"],
+        "type": "single"
+      },
+      {
+        "text": "Question 3",
+        "type": "field"
+      }
+    ],
+    "correctAnswers": {
+      "Question 1": ["answer 2", "answer 1"],
+      "Question 2": ["answer 3"],
+      "Question 3": ["answer"]
+    }
+  },
+  {
+    "id": 6,
+    "name": "Python Advanced",
+    "likes": 17,
+    "description": "Nice description of great quiz. This quiz is super and great. This quiz will help you to learn everything about this world.",
+    "time": 5,
+    "questions": [
+      {
+        "text": "Question 1",
+        "options": ["answer 1", "answer 2", "answer 3"],
+        "type": "multiple"
+      },
+      {
+        "text": "Question 2",
+        "options": ["answer 1", "answer 2", "answer 3", "answer 4"],
+        "type": "single"
+      },
+      {
+        "text": "Question 3",
+        "type": "field"
+      }
+    ],
+    "correctAnswers": {
+      "Question 1": ["answer 2", "answer 1"],
+      "Question 2": ["answer 3"],
+      "Question 3": ["answer"]
+    }
+  },
+  {
+    "id": 7,
+    "name": "C#",
+    "likes": 13,
+    "description": "Nice description of great quiz. This quiz is super and great. This quiz will help you to learn everything about this world.",
+    "time": 5,
+    "questions": [
+      {
+        "text": "Question 1",
+        "options": ["answer 1", "answer 2", "answer 3"],
+        "type": "multiple"
+      },
+      {
+        "text": "Question 2",
+        "options": ["answer 1", "answer 2", "answer 3", "answer 4"],
+        "type": "single"
+      },
+      {
+        "text": "Question 3",
+        "type": "field"
+      }
+    ],
+    "correctAnswers": {
+      "Question 1": ["answer 2", "answer 1"],
+      "Question 2": ["answer 3"],
+      "Question 3": ["answer"]
+    }
+  },
+  {
+    "id": 8,
+    "name": "java script essentials",
+    "likes": 19,
+    "description": "Nice description of great quiz. This quiz is super and great. This quiz will help you to learn everything about this world.",
+    "time": 5,
+    "questions": [
+      {
+        "text": "Question 1",
+        "options": ["answer 1", "answer 2", "answer 3"],
+        "type": "multiple"
+      },
+      {
+        "text": "Question 2",
+        "options": ["answer 1", "answer 2", "answer 3", "answer 4"],
+        "type": "single"
+      },
+      {
+        "text": "Question 3",
+        "type": "field"
+      }
+    ],
+    "correctAnswers": {
+      "Question 1": ["answer 2", "answer 1"],
+      "Question 2": ["answer 3"],
+      "Question 3": ["answer"]
+    }
+  },
+  {
+    "id": 9,
+    "name": "Ruby",
+    "likes": 8,
+    "description": "Nice description of great quiz. This quiz is super and great. This quiz will help you to learn everything about this world.",
+    "time": 5,
+    "questions": [
+      {
+        "text": "Question 1",
+        "options": ["answer 1", "answer 2", "answer 3"],
+        "type": "multiple"
+      },
+      {
+        "text": "Question 2",
+        "options": ["answer 1", "answer 2", "answer 3", "answer 4"],
+        "type": "single"
+      },
+      {
+        "text": "Question 3",
+        "type": "field"
+      }
+    ],
+    "correctAnswers": {
+      "Question 1": ["answer 2", "answer 1"],
+      "Question 2": ["answer 3"],
+      "Question 3": ["answer"]
+    }
+  },
+  {
+    "id": 10,
+    "name": "PHP",
+    "likes": 5,
+    "description": "Nice description of great quiz. This quiz is super and great. This quiz will help you to learn everything about this world.",
+    "time": 5,
+    "questions": [
+      {
+        "text": "Question 1",
+        "options": ["answer 1", "answer 2", "answer 3"],
+        "type": "multiple"
+      },
+      {
+        "text": "Question 2",
+        "options": ["answer 1", "answer 2", "answer 3", "answer 4"],
+        "type": "single"
+      },
+      {
+        "text": "Question 3",
+        "type": "field"
+      }
+    ],
+    "correctAnswers": {
+      "Question 1": ["answer 2", "answer 1"],
+      "Question 2": ["answer 3"],
+      "Question 3": ["answer"]
+    }
+  },
+  {
+    "id": 11,
+    "name": "C++",
+    "likes": 17,
+    "description": "Nice description of great quiz. This quiz is super and great. This quiz will help you to learn everything about this world.",
+    "time": 5,
+    "questions": [
+      {
+        "text": "Question 1",
+        "options": ["answer 1", "answer 2", "answer 3"],
+        "type": "multiple"
+      },
+      {
+        "text": "Question 2",
+        "options": ["answer 1", "answer 2", "answer 3", "answer 4"],
+        "type": "single"
+      },
+      {
+        "text": "Question 3",
+        "type": "field"
+      }
+    ],
+    "correctAnswers": {
+      "Question 1": ["answer 2", "answer 1"],
+      "Question 2": ["answer 3"],
+      "Question 3": ["answer"]
+    }
+  }
+]
