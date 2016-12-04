@@ -17,7 +17,6 @@ router.get('/:id', function(req, res) {
    var quiz = quizzes.find(function(quiz) {
        return quiz.id == req.params.id;
    });
-   console.log(quiz);
    res.send(quiz);
 });
 
