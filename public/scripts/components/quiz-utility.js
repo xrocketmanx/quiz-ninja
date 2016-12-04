@@ -2,7 +2,7 @@
  * Scope of Quiz Library
  * @return {Quiz}
  */
-var Quiz = (function() {
+var QuizUtil = (function() {
     "use strict";
 
     /**
