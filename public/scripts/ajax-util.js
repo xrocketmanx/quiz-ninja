@@ -17,17 +17,21 @@ var ajaxUtil = (function() {
         url = appendParams(url, {uniq_param: Date.now()});
 
         var xhr = new XMLHttpRequest();
-        xhr.open(method, url, true);
+        try {
+            xhr.open(method, url, true);
+        } catch(error) {
+            onError(error);
+        }
         xhr.onreadystatechange = function() {
             if (xhr.readyState != 4) return;
 
-            if (xhr.status != 200) {
+            if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
+                onSuccess(JSON.parse(xhr.responseText));
+            } else {
                 onError({
                     code: xhr.status,
                     message: xhr.statusText
                 });
-            } else {
-                onSuccess(JSON.parse(xhr.responseText));
             }
         };
 
@@ -35,6 +39,10 @@ var ajaxUtil = (function() {
     }
 
     function appendParams(url, params) {
+        if (typeof params !== 'object' || params === null) {
+            throw new TypeError('appendParams(): params is not object');
+        }
+
         url = appendSuffix(url);
 
         var temp = [];
@@ -46,6 +54,10 @@ var ajaxUtil = (function() {
     }
 
     function appendSuffix(url) {
+        if (typeof url !== 'string') {
+            throw new TypeError('appendParams(): url is not string');
+        }
+
         var index = url.indexOf('?');
         var suffix = '';
         if (index < 0) {
