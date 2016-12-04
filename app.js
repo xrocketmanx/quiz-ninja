@@ -15,6 +15,7 @@ app.use('/$', function(req, res) {
 });
 
 app.use('/pages', require('./routes/pages'));
+app.use('/quizzes', require('./routes/quizzes.js'));
 
 var PORT = process.env['PORT'] || 3000;
 
