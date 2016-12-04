@@ -1,5 +1,6 @@
-"use strict";
 function Carousel(carousel) {
+    "use strict";
+
     var self = this;
     var ACTIVE_CLASS = 'active';
     var LEFT_CLASS = 'left';

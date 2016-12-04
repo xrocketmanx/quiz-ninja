@@ -1,3 +1,5 @@
+"use strict";
+
 //INIT
 var quizzesContainer = document.querySelector('.quizzes-list');
 var paginationContainer = document.querySelector('.pagination-container');
@@ -44,7 +46,7 @@ function QuizzesController(quizzesDB, quizzesView, viewOptions) {
  * @constructor
  */
 function Quizzes(ajax) {
-    this.quizzes = [];
+    var quizzes = [];
 
     this.load = function(callback) {
         quizzes = [
@@ -201,7 +203,7 @@ function QuizzesView(container, paginationContainer) {
     function createButton(text, id) {
         var btn = document.createElement('a');
         btn.appendChild(document.createTextNode(text));
-        btn.setAttribute('href', '/quiz?id=' + id);
+        btn.setAttribute('href', 'quiz.html?id=' + id);
         btn.className = CLASS_NAMES.btn;
         return btn;
     }

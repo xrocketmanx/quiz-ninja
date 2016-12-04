@@ -1,5 +1,6 @@
-"use strict";
 var modal = (function() {
+    "use strict";
+
     return {
         bindImages: function(selector) {
             var images = document.querySelectorAll(selector);
