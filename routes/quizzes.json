@@ -31,28 +31,45 @@
     "id": 2,
     "name": "JavaScript",
     "likes": 15,
-    "description": "Nice description of great quiz. This quiz is super and great. This quiz will help you to learn everything about this world.",
+    "description": "Has real not dummy content",
     "time": 5,
     "questions": [
       {
-        "text": "Question 1",
-        "options": ["answer 1", "answer 2", "answer 3"],
+        "text": "Mark real cons of JS:",
+        "options": [
+          "Need of cross browser compatibility",
+          "Lack of date formatting",
+          "Js has strange OOP",
+          "It has a lot of magic"
+        ],
         "type": "multiple"
       },
       {
-        "text": "Question 2",
-        "options": ["answer 1", "answer 2", "answer 3", "answer 4"],
+        "text": "JavaScript is the child of Java?",
+        "options": ["Yes", "No", "Opposite"],
         "type": "single"
       },
       {
-        "text": "Question 3",
+        "text": "Replace underscores with missing word - _______.log('Hello World!')",
         "type": "field"
+      },
+      {
+        "text": "Choose correct ways to define an array:",
+        "options": [
+          "var arr = new Array()",
+          "var arr[] = new Array()",
+          "var arr = []",
+          "var arr = [10]",
+          "var arr = Array(3)"
+        ],
+        "type": "multiple"
       }
     ],
     "correctAnswers": {
-      "Question 1": ["answer 2", "answer 1"],
-      "Question 2": ["answer 3"],
-      "Question 3": ["answer"]
+      "Mark real cons of JS:": ["Need of cross browser compatibility", "Lack of date formatting"],
+      "JavaScript is the child of Java?": ["No"],
+      "Replace underscores with missing word - _______.log('Hello World!')": ["console"],
+      "Choose correct ways to define an array:": ["var arr = new Array()", "var arr = []", "var arr = Array(3)"]
     }
   },
   {
