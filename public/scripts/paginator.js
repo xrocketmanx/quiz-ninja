@@ -1,4 +1,9 @@
 function Paginator(items, itemsPageCount) {
+    "use strict";
+
+    check('items', items, 'array');
+    check('itemsPageCount', itemsPageCount, 'number');
+
     var length = items.length;
     var page = 1;
     var pagesCount = Math.ceil(length / itemsPageCount);
@@ -13,6 +18,8 @@ function Paginator(items, itemsPageCount) {
     };
 
     this.getPagination = function(onClick) {
+        check('onClick', onClick, 'function');
+
         var pagination = renderPagination();
 
         var pages = pagination.children;
