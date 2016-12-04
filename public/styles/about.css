@@ -721,8 +721,10 @@ body {
 .logo h1 {
   padding: 15px 0;
   margin: 0;
+}
+.logo h1 a {
   color: #eeeeee;
-  cursor: default;
+  text-decoration: none;
 }
 .logo h1 .logo-ninja {
   color: #2eb3ee;
