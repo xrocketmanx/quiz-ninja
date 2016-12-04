@@ -7,7 +7,7 @@
 
     function QuizController(quizView, quizDb) {
         this.load = function() {
-            quizDb.load(2, function(quiz) {
+            quizDb.load(quizView.getQueryParams().id, function(quiz) {
                 quizView.load(quiz);
                 var quizUtil = new QuizUtil(quiz.questions, quiz.time, function(questions) {
                     quizView.showResult(quizUtil.getResult(questions, quiz.correctAnswers), questions.length);
@@ -22,37 +22,12 @@
     }
 
     function QuizDb(ajax) {
-        var quiz = {
-            name: 'C++',
-            likes: 17,
-            description: 'Nice description of great quiz. This quiz is super and great. ' +
-            'This quiz will help you to learn everything about this world.',
-            time: 5,
-            questions: [
-                {
-                    text: 'Question 1',
-                    options: ['answer 1', 'answer 2', 'answer 3'],
-                    type: 'multiple'
-                },
-                {
-                    text: 'Question 2',
-                    options: ['answer 1', 'answer 2', 'answer 3', 'answer 4'],
-                    type: 'single'
-                },
-                {
-                    text: 'Question 3',
-                    type: 'field'
-                }
-            ],
-            correctAnswers: {
-                'Question 1': ['answer 2', 'answer 1'],
-                'Question 2': ['answer 3'],
-                'Question 3': ['answer']
-            }
-        };
-
         this.load = function(id, callback) {
-            callback(quiz);
+            ajax.getJSON('/quizzes/' + id, function(quiz) {
+                callback(quiz);
+            }, function(error) {
+                console.error(error.message);
+            });
         }
     }
 
@@ -71,6 +46,15 @@
 
         this.showForm = function() {
             quizForm.style.display = 'block';
+        };
+
+        this.getQueryParams = function() {
+            var params = window.location.search.slice(1).split('&');
+            return params.reduce(function(obj, param) {
+                var pair = param.split('=');
+                obj[pair[0]] = pair[1];
+                return obj;
+            }, {});
         };
 
         this.showResult = function(answered, all) {

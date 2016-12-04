@@ -50,20 +50,12 @@
         var quizzes = [];
 
         this.load = function(callback) {
-            quizzes = [
-                {id: 1, name: 'HTML', likes: 23, description: 'Nice description of great quiz. This quiz is super and great. This quiz will help you to learn everything about this world.'},
-                {id: 2, name: 'JavaScript', likes: 15, description: 'Nice description of great quiz. This quiz is super and great. This quiz will help you to learn everything about this world.'},
-                {id: 3, name: 'Python Basics', likes: 10, description: 'Nice description of great quiz. This quiz is super and great. This quiz will help you to learn everything about this world.'},
-                {id: 4, name: 'Java', likes: 5, description: 'Nice description of great quiz. This quiz is super and great. This quiz will help you to learn everything about this world.'},
-                {id: 5, name: 'Java Advanced', likes: 32, description: 'Nice description of great quiz. This quiz is super and great. This quiz will help you to learn everything about this world.'},
-                {id: 6, name: 'Python Advanced', likes: 17, description: 'Nice description of great quiz. This quiz is super and great. This quiz will help you to learn everything about this world.'},
-                {id: 7, name: 'C#', likes: 13, description: 'Nice description of great quiz. This quiz is super and great. This quiz will help you to learn everything about this world.'},
-                {id: 8, name: 'java script essentials', likes: 19, description: 'Nice description of great quiz. This quiz is super and great. This quiz will help you to learn everything about this world.'},
-                {id: 9, name: 'Ruby', likes: 8, description: 'Nice description of great quiz. This quiz is super and great. This quiz will help you to learn everything about this world.'},
-                {id: 10, name: 'PHP', likes: 5, description: 'Nice description of great quiz. This quiz is super and great. This quiz will help you to learn everything about this world.'},
-                {id: 11, name: 'C++', likes: 17, description: 'Nice description of great quiz. This quiz is super and great. This quiz will help you to learn everything about this world.'}
-            ];
-            callback();
+            ajax.getJSON('/quizzes', function(result) {
+                quizzes = result;
+                callback();
+            }, function(error) {
+                console.error(error.message);
+            });
         };
 
         this.getQuizzes = function(options) {
