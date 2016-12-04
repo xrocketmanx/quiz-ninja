@@ -1,4 +1,4 @@
-var ajaxUtil = (function(check) {
+var ajaxUtil = (function(typeCheck) {
     function getJSON(url, onSuccess, onError) {
         var xhr = prepareRequest(url, 'GET', onSuccess, onError);
         xhr.send();
@@ -18,8 +18,8 @@ var ajaxUtil = (function(check) {
                 throw error;
             };
         }
-        check('onSuccess', onSuccess, 'function');
-        check('onError', onError, 'function');
+        typeCheck('onSuccess', onSuccess, 'function');
+        typeCheck('onError', onError, 'function');
 
         //ie8 cache hack
         url = appendParams(url, {uniq_param: Date.now()});
@@ -54,7 +54,7 @@ var ajaxUtil = (function(check) {
     }
 
     function appendParams(url, params) {
-        check('params', params, 'object');
+        typeCheck('params', params, 'object');
 
         url = appendSuffix(url);
 
@@ -67,7 +67,7 @@ var ajaxUtil = (function(check) {
     }
 
     function appendSuffix(url) {
-        check('url', url, 'string');
+        typeCheck('url', url, 'string');
 
         var index = url.indexOf('?');
         var suffix = '';
@@ -84,4 +84,4 @@ var ajaxUtil = (function(check) {
         sendJSON: sendJSON,
         appendParams: appendParams
     };
-})(check);
+})(typeCheck);

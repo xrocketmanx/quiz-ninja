@@ -1,4 +1,4 @@
-var check = (function () {
+var typeCheck = (function () {
     var checkers = {
         'number': function(value) {
             return !isNaN(parseFloat(value)) && isFinite(value);
