@@ -1,4 +1,4 @@
-var ajaxUtil = (function() {
+var ajaxUtil = (function(check) {
     function getJSON(url, onSuccess, onError) {
         var xhr = prepareRequest(url, 'GET', onSuccess, onError);
         xhr.send();
@@ -13,6 +13,14 @@ var ajaxUtil = (function() {
     }
 
     function prepareRequest(url, method, onSuccess, onError) {
+        if (onError === undefined) {
+            onError = function(error) {
+                throw error;
+            };
+        }
+        check('onSuccess', onSuccess, 'function');
+        check('onError', onError, 'function');
+
         //ie8 cache hack
         url = appendParams(url, {uniq_param: Date.now()});
 
@@ -22,11 +30,18 @@ var ajaxUtil = (function() {
         } catch(error) {
             onError(error);
         }
+
         xhr.onreadystatechange = function() {
             if (xhr.readyState != 4) return;
 
             if ((xhr.status >= 200 && xhr.status < 300) || xhr.status == 304) {
-                onSuccess(JSON.parse(xhr.responseText));
+                try {
+                    var json = JSON.parse(xhr.responseText);
+                } catch (error) {
+                    onError(error);
+                }
+
+                onSuccess(json);
             } else {
                 onError({
                     code: xhr.status,
@@ -39,9 +54,7 @@ var ajaxUtil = (function() {
     }
 
     function appendParams(url, params) {
-        if (typeof params !== 'object' || params === null) {
-            throw new TypeError('appendParams(): params is not object');
-        }
+        check('params', params, 'object');
 
         url = appendSuffix(url);
 
@@ -54,9 +67,7 @@ var ajaxUtil = (function() {
     }
 
     function appendSuffix(url) {
-        if (typeof url !== 'string') {
-            throw new TypeError('appendParams(): url is not string');
-        }
+        check('url', url, 'string');
 
         var index = url.indexOf('?');
         var suffix = '';
@@ -73,4 +84,4 @@ var ajaxUtil = (function() {
         sendJSON: sendJSON,
         appendParams: appendParams
     };
-})();
+})(check);
