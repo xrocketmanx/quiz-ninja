@@ -160,7 +160,7 @@
 
             var description = createDescription(quiz.description);
 
-            var btn = createButton('Learn more...', quiz.id);
+            var btn = createButton('to quiz', quiz.id);
 
             quizElement.appendChild(header);
             quizElement.appendChild(description);
