@@ -64,8 +64,6 @@ gulp.task('build', ['clean', 'less'], function() {
     var css = gulp.src(paths.get('styles') + '*.css')
         .pipe(cleancss())
         .pipe(gulp.dest(paths.get('build') + 'styles/'));
-    var html = gulp.src(paths.get('./') + '*.html')
-        .pipe(gulp.dest(paths.get('build')));
     var img = gulp.src(paths.get('img') + '**/*')
         .pipe(gulp.dest(paths.get('build') + 'img/'));
 });
