@@ -20,6 +20,11 @@
         };
     }
     //Arrays
+    if (!Array.isArray) {
+        Array.isArray = function(arg) {
+            return Object.prototype.toString.call(arg) === '[object Array]';
+        };
+    }
     if(!Array.prototype.indexOf) {
         Array.prototype.indexOf = function(searchElement, fromIndex) {
             fromIndex = fromIndex || 0;
