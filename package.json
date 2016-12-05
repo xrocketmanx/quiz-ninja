@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/xrocketmanx/quiz-ninja#readme",
   "devDependencies": {
+    "body-parser": "^1.15.2",
     "del": "^2.2.2",
     "gulp": "^3.9.1",
     "gulp-clean-css": "^2.0.13",
