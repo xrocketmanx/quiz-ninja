@@ -29,6 +29,11 @@ var ajaxUtil = (function() {
             onError(error);
         }
 
+        xhr.timeout = 5000;
+        xhr.ontimeout = function (e) {
+            onError(new Error("server not responding"));
+        };
+
         xhr.onreadystatechange = function() {
             if (xhr.readyState != 4) return;
 
