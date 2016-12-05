@@ -10,7 +10,9 @@
             quizDb.load(quizView.getQueryParams().id, function(quiz) {
                 quizView.load(quiz);
                 var quizUtil = new QuizUtil(quiz.questions, quiz.time, function(questions) {
-                    quizView.showResult(quizUtil.getResult(questions, quiz.correctAnswers), questions.length);
+                    quizDb.loadAnswers(quiz.id, function(answers) {
+                        quizView.showResult(quizUtil.getResult(questions, answers), questions.length);
+                    });
                 });
                 quizView.onStartClick(function() {
                     quizUtil.loadQuiz();
@@ -28,7 +30,15 @@
             }, function(error) {
                 console.error(error.message);
             });
-        }
+        };
+
+        this.loadAnswers = function(id, callback) {
+            ajax.getJSON('/quizzes/' + id + '/answers', function(answers) {
+                callback(answers);
+            }, function(error) {
+                console.error(error.message);
+            });
+        };
     }
 
     function QuizView(container) {

@@ -17,7 +17,20 @@ router.get('/:id', function(req, res) {
    var quiz = quizzes.find(function(quiz) {
        return quiz.id == req.params.id;
    });
-   res.send(quiz);
+   res.send({
+       id: quiz.id,
+       name: quiz.name,
+       time: quiz.time,
+       questions: quiz.questions
+   });
+});
+
+router.get('/:id/answers', function(req, res) {
+    var quizzes = require('./quizzes.json');
+    var quiz = quizzes.find(function(quiz) {
+        return quiz.id == req.params.id;
+    });
+    res.send(quiz.correctAnswers);
 });
 
 module.exports = router;
