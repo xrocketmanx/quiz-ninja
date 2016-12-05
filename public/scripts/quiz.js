@@ -28,7 +28,8 @@
             ajax.getJSON('/quizzes/' + id, function(quiz) {
                 callback(quiz);
             }, function(error) {
-                console.error(error.message);
+                showError('failed to load quiz');
+                sendError(error);
             });
         };
 
@@ -36,7 +37,8 @@
             ajax.getJSON('/quizzes/' + id + '/answers', function(answers) {
                 callback(answers);
             }, function(error) {
-                console.error(error.message);
+                showError('failed to load answers');
+                sendError(error);
             });
         };
     }
@@ -85,5 +87,16 @@
                 callback.apply(this, arguments);
             });
         };
+    }
+
+    function showError(message) {
+        alert('Error: ' + message);
+    }
+
+    function sendError(error) {
+        ajaxUtil.sendJSON('/log/error', {
+            message: error.message,
+            stack: error.stack
+        }, function() {});
     }
 })();

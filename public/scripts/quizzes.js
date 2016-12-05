@@ -54,7 +54,8 @@
                 quizzes = result;
                 callback();
             }, function(error) {
-                console.error(error.message);
+                showError('failed to load quizzes');
+                sendError(error);
             });
         };
 
@@ -242,5 +243,16 @@
                 }
             };
         };
+    }
+
+    function showError(message) {
+        alert('Error: ' + message);
+    }
+    
+    function sendError(error) {
+        ajaxUtil.sendJSON('/log/error', {
+            message: error.message,
+            stack: error.stack
+        }, function() {});
     }
 })();
