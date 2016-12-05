@@ -502,6 +502,7 @@ var QuizUtil = (function(typeCheck) {
             }
             typeCheck('seconds', initialSeconds, 'number');
             typeCheck('action', action, 'function');
+            typeCheck('callback', callback, 'function', true);
 
             seconds = initialSeconds;
             start();

@@ -13,13 +13,14 @@ var ajaxUtil = (function(typeCheck) {
     }
 
     function prepareRequest(url, method, onSuccess, onError) {
+        typeCheck('onSuccess', onSuccess, 'function');
+        typeCheck('onError', onError, 'function', true);
+
         if (onError === undefined) {
             onError = function(error) {
                 throw error;
             };
         }
-        typeCheck('onSuccess', onSuccess, 'function');
-        typeCheck('onError', onError, 'function');
 
         //ie8 cache hack
         url = appendParams(url, {uniq_param: Date.now()});
