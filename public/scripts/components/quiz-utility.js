@@ -1,9 +1,8 @@
 /**
  * Scope of Quiz Library
- * @param {function} typeCheck checks type of value
  * @return {Quiz}
  */
-var QuizUtil = (function(typeCheck) {
+var QuizUtil = (function() {
     "use strict";
 
     /**
@@ -16,10 +15,6 @@ var QuizUtil = (function(typeCheck) {
      * @constructor
      */
     function Quiz(questions, time, callback) {
-        typeCheck('questions', questions, 'array');
-        typeCheck('time', time, 'number');
-        typeCheck('callback', callback, 'function');
-
         var quizNavigator = new QuizNavigator(questions);
         var docManipulator = new DocumentManipulator();
         var quizElements;
@@ -50,10 +45,6 @@ var QuizUtil = (function(typeCheck) {
          * @returns {number}
          */
         this.getResult = function(questions, correctAnswers) {
-            typeCheck('questions', questions, 'array');
-            typeCheck('correctAnswers', correctAnswers, 'object');
-
-
             var answered = 0;
             for (var i = 0; i < questions.length; i++) {
                 var userAnswers = questions[i].answers || [];
@@ -217,7 +208,6 @@ var QuizUtil = (function(typeCheck) {
          * @param  {Number} questionsCount for navigation bar
          */
         this.loadQuizDOM = function(questionsCount) {
-            typeCheck('questionsCount', questionsCount, 'number');
 
             quizElements = {};
             var form = document.querySelector('.' + CLASS_NAMES.FORM_CLASS);
@@ -235,7 +225,6 @@ var QuizUtil = (function(typeCheck) {
          * @param  {Object} question
          */
         this.loadQuestion = function(question) {
-            typeCheck('question', question, 'object');
 
             var questionForm = quizElements.main.question;
             questionForm.innerHTML = '';
@@ -403,8 +392,6 @@ var QuizUtil = (function(typeCheck) {
      * @constructor
      */
     function QuizNavigator(questions) {
-        typeCheck('questions', questions, 'array');
-
         var length = questions.length;
         var cursor = 0;
 
@@ -500,9 +487,6 @@ var QuizUtil = (function(typeCheck) {
             if (_callback) {
                 callback = _callback;
             }
-            typeCheck('seconds', initialSeconds, 'number');
-            typeCheck('action', action, 'function');
-            typeCheck('callback', callback, 'function', true);
 
             seconds = initialSeconds;
             start();
@@ -593,4 +577,4 @@ var QuizUtil = (function(typeCheck) {
 
     return Quiz;
 
-})(typeCheck);
+})();

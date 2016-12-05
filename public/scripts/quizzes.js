@@ -55,7 +55,7 @@
                 callback();
             }, function(error) {
                 showError('failed to load quizzes');
-                sendError(error);
+                throw error;
             });
         };
 
@@ -247,12 +247,5 @@
 
     function showError(message) {
         alert('Error: ' + message);
-    }
-    
-    function sendError(error) {
-        ajaxUtil.sendJSON('/log/error', {
-            message: error.message,
-            stack: error.stack
-        }, function() {});
     }
 })();

@@ -1,10 +1,8 @@
-var modal = (function(typeCheck) {
+var modal = (function() {
     "use strict";
 
     return {
         bindImages: function(selector) {
-            typeCheck('selector', selector, 'string');
-
             var images = document.querySelectorAll(selector);
             var modalImage = document.querySelector('.modal-image');
 
@@ -23,4 +21,4 @@ var modal = (function(typeCheck) {
             }
         }
     };
-})(typeCheck);
+})();

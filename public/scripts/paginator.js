@@ -1,10 +1,7 @@
-var Paginator = (function(typeCheck){
+var Paginator = (function(){
     "use strict";
 
     function Paginator(items, itemsPageCount) {
-        typeCheck('items', items, 'array');
-        typeCheck('itemsPageCount', itemsPageCount, 'number');
-
         var length = items.length;
         var page = 1;
         var pagesCount = Math.ceil(length / itemsPageCount);
@@ -19,8 +16,6 @@ var Paginator = (function(typeCheck){
         };
 
         this.getPagination = function(onClick) {
-            typeCheck('onClick', onClick, 'function');
-
             var pagination = renderPagination();
 
             var pages = pagination.children;
@@ -78,4 +73,4 @@ var Paginator = (function(typeCheck){
     }
 
     return Paginator;
-})(typeCheck);
+})();

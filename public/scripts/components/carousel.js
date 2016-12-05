@@ -1,4 +1,4 @@
-var Carousel = (function(typeCheck) {
+var Carousel = (function() {
     "use strict";
 
     function Carousel(carousel) {
@@ -27,8 +27,6 @@ var Carousel = (function(typeCheck) {
         this.start = function(interval, direction) {
             interval = interval || 2000;
             direction = direction || 'forward';
-            typeCheck('interval', interval, 'number');
-            typeCheck('direction', direction, 'string');
 
             var func;
 
@@ -96,4 +94,4 @@ var Carousel = (function(typeCheck) {
         attachEvents();
     }
     return Carousel;
-})(typeCheck);
+})();

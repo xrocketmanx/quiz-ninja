@@ -1,4 +1,4 @@
-var ajaxUtil = (function(typeCheck) {
+var ajaxUtil = (function() {
     function getJSON(url, onSuccess, onError) {
         var xhr = prepareRequest(url, 'GET', onSuccess, onError);
         xhr.send();
@@ -13,9 +13,6 @@ var ajaxUtil = (function(typeCheck) {
     }
 
     function prepareRequest(url, method, onSuccess, onError) {
-        typeCheck('onSuccess', onSuccess, 'function');
-        typeCheck('onError', onError, 'function', true);
-
         if (onError === undefined) {
             onError = function(error) {
                 throw error;
@@ -55,8 +52,6 @@ var ajaxUtil = (function(typeCheck) {
     }
 
     function appendParams(url, params) {
-        typeCheck('params', params, 'object');
-
         url = appendSuffix(url);
 
         var temp = [];
@@ -68,8 +63,6 @@ var ajaxUtil = (function(typeCheck) {
     }
 
     function appendSuffix(url) {
-        typeCheck('url', url, 'string');
-
         var index = url.indexOf('?');
         var suffix = '';
         if (index < 0) {
@@ -85,4 +78,4 @@ var ajaxUtil = (function(typeCheck) {
         sendJSON: sendJSON,
         appendParams: appendParams
     };
-})(typeCheck);
+})();
