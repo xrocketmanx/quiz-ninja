@@ -1,8 +1,9 @@
 /**
  * Scope of Quiz Library
+ * @param {function} typeCheck checks type of value
  * @return {Quiz}
  */
-var QuizUtil = (function() {
+var QuizUtil = (function(typeCheck) {
     "use strict";
 
     /**
@@ -15,6 +16,9 @@ var QuizUtil = (function() {
      * @constructor
      */
     function Quiz(questions, time, callback) {
+        typeCheck('questions', questions, 'array');
+        typeCheck('time', time, 'number');
+        typeCheck('callback', callback, 'function');
 
         var quizNavigator = new QuizNavigator(questions);
         var docManipulator = new DocumentManipulator();
@@ -39,7 +43,17 @@ var QuizUtil = (function() {
             timer.start();
         };
 
+        /**
+         * Calculates number of correct answers
+         * @param {Array} questions
+         * @param {Object} correctAnswers
+         * @returns {number}
+         */
         this.getResult = function(questions, correctAnswers) {
+            typeCheck('questions', questions, 'array');
+            typeCheck('correctAnswers', correctAnswers, 'object');
+
+
             var answered = 0;
             for (var i = 0; i < questions.length; i++) {
                 var userAnswers = questions[i].answers || [];
@@ -203,6 +217,8 @@ var QuizUtil = (function() {
          * @param  {Number} questionsCount for navigation bar
          */
         this.loadQuizDOM = function(questionsCount) {
+            typeCheck('questionsCount', questionsCount, 'number');
+
             quizElements = {};
             var form = document.querySelector('.' + CLASS_NAMES.FORM_CLASS);
 
@@ -219,6 +235,8 @@ var QuizUtil = (function() {
          * @param  {Object} question
          */
         this.loadQuestion = function(question) {
+            typeCheck('question', question, 'object');
+
             var questionForm = quizElements.main.question;
             questionForm.innerHTML = '';
             questionForm.appendChild(document.createTextNode(question.text));
@@ -385,6 +403,8 @@ var QuizUtil = (function() {
      * @constructor
      */
     function QuizNavigator(questions) {
+        typeCheck('questions', questions, 'array');
+
         var length = questions.length;
         var cursor = 0;
 
@@ -459,6 +479,7 @@ var QuizUtil = (function() {
      * @constructor
      */
     function Timer(seconds, action, callback) {
+
         var interval;
         var initialSeconds = seconds;
 
@@ -479,6 +500,9 @@ var QuizUtil = (function() {
             if (_callback) {
                 callback = _callback;
             }
+            typeCheck('seconds', initialSeconds, 'number');
+            typeCheck('action', action, 'function');
+
             seconds = initialSeconds;
             start();
         };
@@ -568,4 +592,4 @@ var QuizUtil = (function() {
 
     return Quiz;
 
-})();
+})(typeCheck);
