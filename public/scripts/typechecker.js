@@ -11,10 +11,11 @@ var typeCheck = (function () {
         }
     };
     
-    return function(name, value, type) {
+    return function(name, value, type, optional) {
         if (value === null) {
             throw new TypeError(name + ' is null');
         } else if (value === undefined) {
+            if (optional) return;
             throw new TypeError(name + ' is undefined');
         }
 
