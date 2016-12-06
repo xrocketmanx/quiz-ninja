@@ -5,7 +5,7 @@
     var quizzesContainer = document.querySelector('.quizzes-list');
     var paginationContainer = document.querySelector('.pagination-container');
     var quizzesController = new QuizzesController(
-        new Quizzes(ajaxUtil), new QuizzesView(quizzesContainer, paginationContainer), new ViewOptions());
+        new Quizzes(ajaxUtil), new QuizzesView(quizzesContainer, paginationContainer), new ViewOptions(document.forms['view-options']));
     quizzesController.load();
 
     /**
@@ -207,10 +207,10 @@
      * Gets user sort and filter options
      * @constructor
      */
-    function ViewOptions() {
-        var nameFilter = document.getElementById('name-filter');
-        var sortField = document.getElementById('sort-field');
-        var orderDirection = document.getElementById('order');
+    function ViewOptions(form) {
+        var nameFilter = form['name'];
+        var sortField = form['sort-field'];
+        var orderDirection = form['order'];
 
         this.onChange = function(callback) {
             var self = this;
