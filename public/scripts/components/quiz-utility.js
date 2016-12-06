@@ -67,8 +67,8 @@ var QuizUtil = (function() {
             var onNavClick = function() {
                 moveDecorator(quizNavigator.setCursor, this.innerHTML - 1);
             };
-            for (var i = 0; i < quizElements.nav.childNodes.length; i++) {
-                quizElements.nav.childNodes[i].addEventListener('click', onNavClick);
+            for (var i = 0; i < quizElements.nav.children.length; i++) {
+                quizElements.nav.children[i].addEventListener('click', onNavClick);
             }
 
             quizElements.buttons.Next.addEventListener('click', moveNext);
@@ -102,10 +102,7 @@ var QuizUtil = (function() {
         function moveDecorator(moveFunction) {
             docManipulator.setActiveQuestion(quizNavigator.getCursor(), 'remove');
 
-            var args = [];
-            for (var i = 1; i < arguments.length; i++) {
-                args.push(arguments[i]);
-            }
+            var args = Array.prototype.slice.call(arguments, 1);
             var success = moveFunction.call(quizNavigator, args);
 
             docManipulator.loadQuestion(quizNavigator.getCurrent());
@@ -265,7 +262,7 @@ var QuizUtil = (function() {
          * @param {String} method 'add' or 'remove'
          */
         this.setActiveQuestion = function(questionIndex, method) {
-            quizElements.nav.childNodes[questionIndex].classList[method]('active');
+            quizElements.nav.children[questionIndex].classList[method]('active');
         };
 
         /**
@@ -274,7 +271,7 @@ var QuizUtil = (function() {
          * @param {String} method 'add' or 'remove'
          */
         this.setAnsweredQuestion = function(questionIndex, method) {
-            quizElements.nav.childNodes[questionIndex].classList[method]('answered');
+            quizElements.nav.children[questionIndex].classList[method]('answered');
         };
 
         function loadOptions(form, question, type) {
