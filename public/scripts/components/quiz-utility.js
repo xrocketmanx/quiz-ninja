@@ -223,25 +223,11 @@ var QuizUtil = (function() {
          */
         this.loadQuestion = function(question) {
 
-            var questionForm = quizElements.main.question;
-            questionForm.innerHTML = '';
-            questionForm.appendChild(document.createTextNode(question.text));
+            var questionElement = quizElements.main.question;
+            loadQuestion(questionElement, question);
 
             var optionsForm = quizElements.main.optionsForm;
-            optionsForm.innerHTML = '';
-            switch(question.type) {
-                case 'multiple': {
-                    loadOptions(optionsForm, question, 'checkbox');
-                    break;
-                }
-                case 'single': {
-                    loadOptions(optionsForm, question, 'radio');
-                    break;
-                }
-                case 'field': {
-                    loadField(optionsForm, question);
-                }
-            }
+            loadInputs(optionsForm, question);
         };
 
         /**
@@ -273,6 +259,28 @@ var QuizUtil = (function() {
         this.setAnsweredQuestion = function(questionIndex, method) {
             quizElements.nav.children[questionIndex].classList[method]('answered');
         };
+        
+        function loadQuestion(element, question) {
+            element.innerHTML = '';
+            element.appendChild(document.createTextNode(question.text));
+        }
+        
+        function loadInputs(form, question) {
+            form.innerHTML = '';
+            switch(question.type) {
+                case 'multiple': {
+                    loadOptions(form, question, 'checkbox');
+                    break;
+                }
+                case 'single': {
+                    loadOptions(form, question, 'radio');
+                    break;
+                }
+                case 'field': {
+                    loadField(form, question);
+                }
+            }
+        }
 
         function loadOptions(form, question, type) {
             var options = question.options;
@@ -280,9 +288,14 @@ var QuizUtil = (function() {
                 var inputGroup = document.createElement('li');
                 inputGroup.className = 'qu-input-group';
                 var input = document.createElement('input');
+
                 input.type = type;
                 input.name = INPUT_ID;
                 input.id = INPUT_ID + i;
+                if (question.answers && question.answers.indexOf(options[i]) >= 0) {
+                    input.checked = true;
+                }
+
                 var label = document.createElement('label');
                 label.htmlFor = INPUT_ID + i;
                 label.appendChild(document.createTextNode(options[i]));
@@ -290,15 +303,6 @@ var QuizUtil = (function() {
                 inputGroup.appendChild(input);
                 inputGroup.appendChild(label);
                 form.appendChild(inputGroup);
-            }
-
-            if (question.answers) {
-                for (var i = 0; i < options.length; i++) {
-                    if (question.answers.indexOf(options[i]) >= 0) {
-                        var input = document.querySelector('#' + INPUT_ID + i);
-                        input.checked = true;
-                    }
-                }
             }
         }
 
