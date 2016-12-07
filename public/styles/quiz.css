@@ -1055,6 +1055,7 @@ body {
 }
 .qu-form .qu-options {
   margin: 15px 0;
+  padding-left: 0;
 }
 .qu-form .qu-options .qu-input-group {
   padding: 15px 7px;

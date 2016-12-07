@@ -277,7 +277,7 @@ var QuizUtil = (function() {
         function loadOptions(form, question, type) {
             var options = question.options;
             for (var i = 0; i < options.length; i++) {
-                var inputGroup = document.createElement('div');
+                var inputGroup = document.createElement('li');
                 inputGroup.className = 'qu-input-group';
                 var input = document.createElement('input');
                 input.type = type;
@@ -354,7 +354,7 @@ var QuizUtil = (function() {
 
             var optionsForm = document.querySelector('.' + CLASS_NAMES.OPTIONS_CLASS);
             if (!optionsForm) {
-                optionsForm = document.createElement('div');
+                optionsForm = document.createElement('ul');
                 optionsForm.classList.add(CLASS_NAMES.OPTIONS_CLASS);
                 form.appendChild(optionsForm);
             }
