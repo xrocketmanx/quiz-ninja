@@ -45,7 +45,7 @@ var QuizUtil = (function() {
          * @returns {number}
          */
         this.getResult = function(questions, correctAnswers) {
-            var answered = 0;
+            var answeredCorrect = 0;
             for (var i = 0; i < questions.length; i++) {
                 var userAnswers = questions[i].answers || [];
                 var correctAnswer = correctAnswers[questions[i].text];
@@ -58,9 +58,15 @@ var QuizUtil = (function() {
                     }
                 }
 
-                if (correct) answered++;
+                if (correct) {
+                    answeredCorrect++;
+                    questions[i].correct = true;
+                }
             }
-            return answered;
+            return {
+                answeredCorrect: answeredCorrect,
+                questionElements: docManipulator.renderResultStats(questions, correctAnswers)
+            }
         };
 
         function bindHandlers() {
@@ -223,8 +229,8 @@ var QuizUtil = (function() {
          */
         this.loadQuestion = function(question) {
 
-            var questionElement = quizElements.main.question;
-            loadQuestion(questionElement, question);
+            var questionTextElement = quizElements.main.question;
+            loadQuestion(questionTextElement, question);
 
             var optionsForm = quizElements.main.optionsForm;
             loadInputs(optionsForm, question);
@@ -259,7 +265,61 @@ var QuizUtil = (function() {
         this.setAnsweredQuestion = function(questionIndex, method) {
             quizElements.nav.children[questionIndex].classList[method]('answered');
         };
-        
+
+        //TODO: refactor
+        /**
+         * Renders questions
+         * to show result of passing test
+         * @param questions
+         * @param answers
+         * @returns {Array}
+         */
+        this.renderResultStats = function(questions, answers) {
+            var resultStats = [];
+            questions.forEach(function(question) {
+                var correctAnswers = answers[question.text];
+                var userAnswers = question.answers;
+
+                var questionElement = document.createElement('div');
+                questionElement.className = 'question-result';
+                if (question.correct) {
+                    questionElement.classList.add('correct');
+                } else {
+                    questionElement.classList.add('wrong');
+                }
+
+                var questionTextElement = quizElements.main.question.cloneNode(false);
+                loadQuestion(questionTextElement, question);
+                var optionsForm = quizElements.main.optionsForm.cloneNode(false);
+                loadInputs(optionsForm, question);
+
+                var inputs = optionsForm.querySelectorAll('input, textarea');
+                Array.prototype.forEach.call(inputs, function(input, i) {
+                    input.setAttribute('disabled', 'disabled');
+                });
+
+                if (question.type === 'field') {
+                    if (!userAnswers || correctAnswers[0] !== userAnswers[0]) {
+                        var answer = document.createElement('p');
+                        answer.className = 'field-answer';
+                        answer.appendChild(document.createTextNode(correctAnswers[0]));
+                        optionsForm.appendChild(answer);
+                    }
+                } else {
+                    question.options.forEach(function(option, i) {
+                        if (correctAnswers.indexOf(option) >= 0) {
+                            optionsForm.children[i].classList.add('correct-answer');
+                        }
+                    });
+                }
+
+                questionElement.appendChild(questionTextElement);
+                questionElement.appendChild(optionsForm);
+                resultStats.push(questionElement);
+            });
+            return resultStats;
+        };
+
         function loadQuestion(element, question) {
             element.innerHTML = '';
             element.appendChild(document.createTextNode(question.text));
@@ -287,8 +347,8 @@ var QuizUtil = (function() {
             for (var i = 0; i < options.length; i++) {
                 var inputGroup = document.createElement('li');
                 inputGroup.className = 'qu-input-group';
-                var input = document.createElement('input');
 
+                var input = document.createElement('input');
                 input.type = type;
                 input.name = INPUT_ID;
                 input.id = INPUT_ID + i;

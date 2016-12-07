@@ -114,3 +114,35 @@
   color: @primary;
   text-align: center;
 }
+
+.question-result {
+  padding: 5px;
+  margin-bottom: 10px;
+
+  .qu-options .qu-input-group input:checked + label {
+    background-color: @danger;
+  }
+
+  .correct-answer label {
+    background-color: @success !important;
+    color: @light-grey
+  }
+
+  .field-answer {
+    color: @success;
+    padding-left: 7px;
+  }
+}
+
+.correct, .wrong {
+  border-width: 2px;
+  border-style: solid;
+}
+
+.correct {
+  border-color: lighten(@success, 15%);
+}
+
+.wrong {
+  border-color: lighten(@danger, 15%);
+}

@@ -59,7 +59,7 @@
           "var arr = new Array()",
           "var arr[] = new Array()",
           "var arr = []",
-          "var arr = [10]",
+          "var arr = new Array[10]",
           "var arr = Array(3)"
         ],
         "type": "multiple"

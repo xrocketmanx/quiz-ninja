@@ -1088,3 +1088,29 @@ body {
   color: #428bca;
   text-align: center;
 }
+.question-result {
+  padding: 5px;
+  margin-bottom: 10px;
+}
+.question-result .qu-options .qu-input-group input:checked + label {
+  background-color: #d9534f;
+}
+.question-result .correct-answer label {
+  background-color: #5cb85c !important;
+  color: #eeeeee;
+}
+.question-result .field-answer {
+  color: #5cb85c;
+  padding-left: 7px;
+}
+.correct,
+.wrong {
+  border-width: 2px;
+  border-style: solid;
+}
+.correct {
+  border-color: #91cf91;
+}
+.wrong {
+  border-color: #e7908e;
+}

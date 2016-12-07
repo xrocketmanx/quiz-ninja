@@ -69,16 +69,19 @@
             }, {});
         };
 
-        this.showResult = function(answered, all) {
+        this.showResult = function(stats, all) {
             quizForm.innerHTML = '';
             var message = 'Result: '
-                + answered + ' of ' + all;
+                + stats.answeredCorrect + ' of ' + all;
 
             var result = document.createElement('p');
             result.className = 'quiz-result';
             result.appendChild(document.createTextNode(message));
 
             quizForm.appendChild(result);
+            for (var i = 0; i < stats.questionElements.length; i++) {
+                quizForm.appendChild(stats.questionElements[i]);
+            }
         };
 
         this.onStartClick = function(callback) {
