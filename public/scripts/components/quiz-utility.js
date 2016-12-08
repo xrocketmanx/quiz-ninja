@@ -40,19 +40,19 @@ var QuizUtil = (function() {
 
         /**
          * Calculates number of correct answers
-         * @param {Array} questions
-         * @param {Object} correctAnswers
+         * @param {Array} questions with user answers
+         * @param {Object} answers contains answers of all questions
          * @returns {number}
          */
-        this.getResult = function(questions, correctAnswers) {
+        this.getResultStats = function(questions, answers) {
             var answeredCorrect = 0;
             for (var i = 0; i < questions.length; i++) {
                 var userAnswers = questions[i].answers || [];
-                var correctAnswer = correctAnswers[questions[i].text];
+                var correctAnswers = answers[questions[i].text];
 
-                for (var j = 0; j < correctAnswer.length; j++) {
-                    var correct = true;
-                    if (userAnswers.indexOf(correctAnswer[j]) < 0) {
+                var correct = true;
+                for (var j = 0; j < correctAnswers.length; j++) {
+                    if (userAnswers.indexOf(correctAnswers[j]) < 0) {
                         correct = false;
                         break;
                     }
@@ -63,9 +63,10 @@ var QuizUtil = (function() {
                     questions[i].correct = true;
                 }
             }
+
             return {
                 answeredCorrect: answeredCorrect,
-                questionElements: docManipulator.renderResultStats(questions, correctAnswers)
+                questionElements: docManipulator.renderResultStats(questions, answers)
             }
         };
 
@@ -200,7 +201,11 @@ var QuizUtil = (function() {
                 'Skip': 'qu-btn-skip',
                 'End': 'qu-btn-end',
                 'Answer': 'qu-btn-answer'
-            }
+            },
+            RESULT_CLASS: 'question-result',
+            CORRECT_CLASS: 'correct',
+            WRONG_CLASS: 'wrong',
+            CORRECT_ANSWER_CLASS: 'correct-answer'
         };
         var INPUT_ID = "answer";
 
@@ -266,26 +271,26 @@ var QuizUtil = (function() {
             quizElements.nav.children[questionIndex].classList[method]('answered');
         };
 
-        //TODO: refactor
         /**
-         * Renders questions
+         * Renders questions with answers
          * to show result of passing test
          * @param questions
-         * @param answers
+         * @param answers of all questions
          * @returns {Array}
          */
         this.renderResultStats = function(questions, answers) {
             var resultStats = [];
+
             questions.forEach(function(question) {
                 var correctAnswers = answers[question.text];
                 var userAnswers = question.answers;
 
                 var questionElement = document.createElement('div');
-                questionElement.className = 'question-result';
+                questionElement.className = CLASS_NAMES.RESULT_CLASS;
                 if (question.correct) {
-                    questionElement.classList.add('correct');
+                    questionElement.classList.add(CLASS_NAMES.CORRECT_CLASS);
                 } else {
-                    questionElement.classList.add('wrong');
+                    questionElement.classList.add(CLASS_NAMES.WRONG_CLASS);
                 }
 
                 var questionTextElement = quizElements.main.question.cloneNode(false);
@@ -308,7 +313,7 @@ var QuizUtil = (function() {
                 } else {
                     question.options.forEach(function(option, i) {
                         if (correctAnswers.indexOf(option) >= 0) {
-                            optionsForm.children[i].classList.add('correct-answer');
+                            optionsForm.children[i].classList.add(CLASS_NAMES.CORRECT_ANSWER_CLASS);
                         }
                     });
                 }
@@ -317,6 +322,7 @@ var QuizUtil = (function() {
                 questionElement.appendChild(optionsForm);
                 resultStats.push(questionElement);
             });
+
             return resultStats;
         };
 

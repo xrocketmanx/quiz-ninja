@@ -11,7 +11,7 @@
                 quizView.load(quiz);
                 var quizUtil = new QuizUtil(quiz.questions, quiz.time, function(questions) {
                     quizDb.loadAnswers(quiz.id, function(answers) {
-                        quizView.showResult(quizUtil.getResult(questions, answers), questions.length);
+                        quizView.showResult(quizUtil.getResultStats(questions, answers));
                     });
                 });
                 quizView.onStartClick(function() {
@@ -69,16 +69,17 @@
             }, {});
         };
 
-        this.showResult = function(stats, all) {
+        this.showResult = function(stats) {
             quizForm.innerHTML = '';
+            var length = stats.questionElements.length;
             var message = 'Result: '
-                + stats.answeredCorrect + ' of ' + all;
+                + stats.answeredCorrect + ' of ' + length;
 
             var result = document.createElement('p');
             result.className = 'quiz-result';
             result.appendChild(document.createTextNode(message));
-
             quizForm.appendChild(result);
+
             for (var i = 0; i < stats.questionElements.length; i++) {
                 quizForm.appendChild(stats.questionElements[i]);
             }
