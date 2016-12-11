@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
     <title>Quiz</title>
-    <meta name="description" content="Quiz ninja quiz page with online testing">
+    <meta name="description" content="QuizNinja online test">
 
     <link rel="stylesheet" type="text/css" href="/styles/quiz.css">
+
     <script defer src="/scripts/ajax-util.js" type="text/javascript"></script>
     <script defer src="/scripts/error-provider.js" type="text/javascript"></script>
     <script defer src="/scripts/components/quiz-utility.js" type="text/javascript"></script>
@@ -41,6 +42,28 @@
             </footer>
         </form>
     </section>
+    <aside class="sharing" id="share">
+        <h3>
+            Share this quiz:
+        </h3>
+        <ul class="share-btns">
+            <li class="vk-share">
+                <a class="share-btn" href="https://vk.com/share.php?url={url}&description={desc}&title={title}">
+                    Share
+                </a>
+            </li>
+            <li class="fb-share">
+                <a class="share-btn" href="https://www.facebook.com/sharer/sharer.php?u={url}">
+                    Share
+                </a>
+            </li>
+            <li class="gl-share">
+                <a class="share-btn" href="https://plus.google.com/share?url={url}&hl=en-US">
+                    Share
+                </a>
+            </li>
+        </ul>
+    </aside>
 </section>
 <%- include('footer'); %>
 </body>

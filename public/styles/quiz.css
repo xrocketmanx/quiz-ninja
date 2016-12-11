@@ -980,6 +980,55 @@ body {
   cursor: pointer;
   vertical-align: middle;
 }
+.sharing {
+  padding: 5px 10px;
+  border: 1px solid #428bca;
+  background: #eeeeee;
+}
+.sharing h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #428bca;
+}
+.share-btns {
+  padding-left: 0;
+  margin: 0;
+}
+.share-btns li {
+  list-style: none;
+  margin: 5px 0;
+}
+.share-btns li a {
+  -webkit-border-radius: 2px   ;
+  -moz-border-radius: 2px   ;
+  border-radius: 2px   ;
+  color: #eeeeee;
+  display: inline-block;
+  padding: 5px 5px 5px 26px;
+  text-decoration: none;
+  font-size: 0.8em;
+}
+.vk-share a {
+  background: url('/img/vk-share.png') 4px center no-repeat;
+  background-color: #507299;
+}
+.vk-share a:hover {
+  background-color: #476688;
+}
+.fb-share a {
+  background: url('/img/fb-share.png') 4px center no-repeat;
+  background-color: #3b5998;
+}
+.fb-share a:hover {
+  background-color: #344e86;
+}
+.gl-share a {
+  background: url('https://www.gstatic.com/images/icons/gplus-16.png') 4px center no-repeat;
+  background-color: #d9534f;
+}
+.gl-share a:hover {
+  background-color: #d43f3a;
+}
 #start {
   position: absolute;
   left: 50%;
@@ -1113,4 +1162,22 @@ body {
 }
 .wrong {
   border-color: #e7908e;
+}
+.content-wrapper {
+  position: relative;
+}
+.sharing {
+  display: none;
+  position: absolute;
+  right: 5px;
+  top: 45px;
+}
+@media only screen and (max-width: 960px) {
+  .sharing {
+    position: static;
+    margin-bottom: 15px;
+  }
+  .sharing li {
+    display: inline-block;
+  }
 }

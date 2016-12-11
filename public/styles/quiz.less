@@ -1,6 +1,7 @@
 @import "base/main";
 @import "base/components/breadcrumb";
 @import "base/components/form";
+@import "base/components/sharing";
 
 #start {
   position: absolute;
@@ -145,4 +146,24 @@
 
 .wrong {
   border-color: lighten(@danger, 15%);
+}
+
+//Sharing
+.content-wrapper {
+  position: relative;
+}
+
+.sharing {
+  display: none;
+  position: absolute;
+  right: 5px;
+  top: 45px;
+
+  @media only screen and (max-width: 960px) {
+    position: static;
+    margin-bottom: 15px;
+    li {
+      display: inline-block;
+    }
+  }
 }

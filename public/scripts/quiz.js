@@ -2,16 +2,19 @@
     "use strict";
 
     var quizContainer = document.getElementById('quiz');
-    var quizController = new QuizController(new QuizView(quizContainer), new QuizDb(ajaxUtil));
+    var shareContainer = document.getElementById('share');
+    var quizController = new QuizController(
+        new QuizView(quizContainer), new ShareView(shareContainer), new QuizDb(ajaxUtil));
     quizController.load();
 
-    function QuizController(quizView, quizDb) {
+    function QuizController(quizView, shareView, quizDb) {
         this.load = function() {
             quizDb.load(quizView.getQueryParams().id, function(quiz) {
                 quizView.load(quiz);
                 var quizUtil = new QuizUtil(quiz.questions, quiz.time, function(questions) {
                     quizDb.loadAnswers(quiz.id, function(answers) {
                         quizView.showResult(quizUtil.getResultStats(questions, answers));
+                        shareView.showSharing(quiz.name);
                     });
                 });
                 quizView.onStartClick(function() {
@@ -91,6 +94,62 @@
                 callback.apply(this, arguments);
             });
         };
+    }
+    
+    function ShareView(container) {
+        container.style.display = 'none';
+
+        this.showSharing = function(description) {
+            container.style.display = 'block';
+            renderShareButtons({
+                url: location.href,
+                desc: description,
+                title: document.title
+            });
+        };
+
+        function renderShareButtons(options) {
+            var buttons = container.querySelectorAll('.share-btn');
+            for (var i = 0; i < buttons.length; i++) {
+                var href = buttons[i].getAttribute('href');
+
+                buttons[i].setAttribute('href', renderHref(href, options));
+                buttons[i].addEventListener('click', popup);
+            }
+        }
+
+        function renderHref(href, options) {
+            for (var key in options) {
+                href = href.replace('{' + key + '}', encodeURIComponent(options[key]));
+            }
+            return href;
+        }
+        
+        function popup(event) {
+            event = event || window.event;
+            if (event.preventDefault) {
+                event.preventDefault();
+            } else {
+                event.returnValue = false;
+            }
+
+            window.open(this.href, '', parseWindowOptions({
+                menubar: 'no',
+                toolbar: 'no',
+                resizable: 'yes',
+                scrollbars: 'yes',
+                height: 400,
+                width: 400
+            }));
+        }
+
+        function parseWindowOptions(options) {
+            var pairs = [];
+            for (var key in options) {
+                pairs.push(key+'='+options[key]);
+            }
+            return pairs.join(',');
+        }
     }
 
     function showError(message) {

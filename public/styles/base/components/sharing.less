@@ -1,0 +1,52 @@
+.sharing {
+  padding: 5px 10px;
+  border: 1px solid @primary;
+  background: @light-grey;
+
+  h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: @primary;
+  }
+}
+
+.share-btns {
+  padding-left: 0;
+  margin: 0;
+
+  li {
+    list-style: none;
+    margin: 5px 0;
+
+    a {
+      .border-radius(2px);
+      color: @light-grey;
+      display: inline-block;
+      padding: 5px 5px 5px 26px;
+      text-decoration: none;
+      font-size: 0.8em;
+    }
+  }
+}
+
+.share-bg(@color) {
+  background-color: @color;
+  &:hover {
+    background-color: darken(@color, 5%);
+  }
+}
+
+.vk-share a {
+  background: url('/img/vk-share.png') 4px center no-repeat;
+  .share-bg(#507299);
+}
+
+.fb-share a {
+  background: url('/img/fb-share.png') 4px center no-repeat;
+  .share-bg(#3b5998);
+}
+
+.gl-share a {
+  background: url('https://www.gstatic.com/images/icons/gplus-16.png') 4px center no-repeat;
+  .share-bg(@danger);
+}
