@@ -1029,6 +1029,18 @@ body {
 .gl-share a:hover {
   background-color: #d43f3a;
 }
+.error-popup {
+  display: none;
+  position: fixed;
+  right: 15px;
+  top: 15px;
+  padding: 15px 45px;
+  font-size: 1.2em;
+  color: #eeeeee;
+  background-color: #d9534f;
+  background: url('../img/error.png') rgba(217, 83, 79, 0.75) 5px center no-repeat;
+  z-index: 1000;
+}
 #start {
   position: absolute;
   left: 50%;

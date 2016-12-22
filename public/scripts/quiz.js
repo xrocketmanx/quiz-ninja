@@ -3,8 +3,14 @@
 
     var quizContainer = document.getElementById('quiz');
     var shareContainer = document.getElementById('share');
+    var errorPopup = document.querySelector('.error-popup');
+
+    var errorNotifier = new ErrorNotifier(errorPopup, 10000);
     var quizController = new QuizController(
-        new QuizView(quizContainer), new ShareView(shareContainer), new QuizDb(ajaxUtil));
+        new QuizView(quizContainer),
+        new ShareView(shareContainer),
+        new QuizDb(ajaxUtil, errorNotifier));
+
     quizController.init();
 
     function QuizController(quizView, shareView, quizDb) {
@@ -32,7 +38,7 @@
         };
     }
 
-    function QuizDb(ajax) {
+    function QuizDb(ajax, errorNotifier) {
         var QUIZZES_PATH = '/quizzes/';
         var ANSWERS_PATH = '/answers';
 
@@ -40,7 +46,7 @@
             ajax.getJSON(QUIZZES_PATH + id, function(quiz) {
                 callback(quiz);
             }, function(error) {
-                showError('failed to load quiz');
+                errorNotifier.show(ErrorNotifier.LOADING_ERROR + ' questions');
                 throw error;
             });
         };
@@ -49,7 +55,7 @@
             ajax.getJSON(QUIZZES_PATH + id + ANSWERS_PATH, function(answers) {
                 callback(answers);
             }, function(error) {
-                showError('failed to load answers');
+                errorNotifier.show(ErrorNotifier.LOADING_ERROR + ' answers');
                 throw error;
             });
         };
@@ -159,9 +165,5 @@
             }
             return pairs.join(',');
         }
-    }
-
-    function showError(message) {
-        alert('Error: ' + message);
     }
 })();

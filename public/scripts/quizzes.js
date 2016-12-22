@@ -3,8 +3,14 @@
 
     var quizzesContainer = document.querySelector('.quizzes-list');
     var paginationContainer = document.querySelector('.pagination-container');
+    var errorPopup = document.querySelector('.error-popup');
+
+    var errorNotifier = new ErrorNotifier(errorPopup, 10000);
     var quizzesController = new QuizzesController(
-        new Quizzes(ajaxUtil), new QuizzesView(quizzesContainer, paginationContainer), new ViewOptions(document.forms['view-options']));
+        new QuizzesDb(ajaxUtil, errorNotifier),
+        new QuizzesView(quizzesContainer, paginationContainer),
+        new ViewOptions(document.forms['view-options']));
+
     quizzesController.init();
 
     function QuizzesController(quizzesDB, quizzesView, viewOptions) {
@@ -37,9 +43,10 @@
     /**
      * Receives and process data
      * @param ajax utility for ajax queries
+     * @param errorNotifier notify user about errors
      * @constructor
      */
-    function Quizzes(ajax) {
+    function QuizzesDb(ajax, errorNotifier) {
         var QUIZZES_PATH = '/quizzes';
         var quizzes = [];
 
@@ -48,7 +55,7 @@
                 quizzes = result;
                 callback();
             }, function(error) {
-                showError('failed to load quizzes');
+                errorNotifier.show(ErrorNotifier.LOADING_ERROR + ' quizzes');
                 throw error;
             });
         };
@@ -237,9 +244,5 @@
                 }
             };
         };
-    }
-
-    function showError(message) {
-        alert('Error: ' + message);
     }
 })();
