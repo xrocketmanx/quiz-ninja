@@ -5,19 +5,25 @@
     var shareContainer = document.getElementById('share');
     var quizController = new QuizController(
         new QuizView(quizContainer), new ShareView(shareContainer), new QuizDb(ajaxUtil));
-    quizController.load();
+    quizController.init();
 
     function QuizController(quizView, shareView, quizDb) {
-        this.load = function() {
-            quizDb.load(quizView.getQueryParams().id, function(quiz) {
-                quizView.load(quiz);
-                var quizUtil = new QuizUtil(quiz.questions, quiz.time, function(questions) {
-                    quizDb.loadAnswers(quiz.id, function(answers) {
-                        quizView.showResult(quizUtil.getResultStats(questions, answers));
-                        shareView.showSharing(quiz.name);
-                    });
+        this.init = function() {
+            quizDb.getById(quizView.getQueryParams().id, function(quiz) {
+                quizView.render(quiz);
+
+                var quizUtil = new QuizUtil({
+                    questions: quiz.questions,
+                    time: quiz.time,
+                    onEnd: function(questions) {
+                        quizDb.getAnswers(quiz.id, function(answers) {
+                            quizView.showResult(quizUtil.getResultStats(questions, answers));
+                            shareView.showSharing(quiz.name);
+                        });
+                    }
                 });
-                quizView.onStartClick(function() {
+
+                quizView.onStart(function() {
                     quizUtil.loadQuiz();
                     quizView.showForm();
                     quizUtil.startQuiz();
@@ -27,8 +33,11 @@
     }
 
     function QuizDb(ajax) {
-        this.load = function(id, callback) {
-            ajax.getJSON('/quizzes/' + id, function(quiz) {
+        var QUIZZES_PATH = '/quizzes/';
+        var ANSWERS_PATH = '/answers';
+
+        this.getById = function(id, callback) {
+            ajax.getJSON(QUIZZES_PATH + id, function(quiz) {
                 callback(quiz);
             }, function(error) {
                 showError('failed to load quiz');
@@ -36,8 +45,8 @@
             });
         };
 
-        this.loadAnswers = function(id, callback) {
-            ajax.getJSON('/quizzes/' + id + '/answers', function(answers) {
+        this.getAnswers = function(id, callback) {
+            ajax.getJSON(QUIZZES_PATH + id + ANSWERS_PATH, function(answers) {
                 callback(answers);
             }, function(error) {
                 showError('failed to load answers');
@@ -50,7 +59,7 @@
         var startBtn = container.querySelector('#start');
         var quizForm = container.querySelector('.qu-form');
 
-        this.load = function(quiz) {
+        this.render = function(quiz) {
             this.hideForm();
             document.querySelector('.breadcrumb .active').innerHTML = quiz.name;
         };
@@ -88,7 +97,7 @@
             }
         };
 
-        this.onStartClick = function(callback) {
+        this.onStart = function(callback) {
             startBtn.addEventListener('click', function() {
                 startBtn.style.display = 'none';
                 callback.apply(this, arguments);

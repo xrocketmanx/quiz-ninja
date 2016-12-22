@@ -8,15 +8,17 @@ var QuizUtil = (function() {
     /**
      * Quiz that has timer. After timeout or test end
      * callback function is called. Changes questions
-     * @param {Array}    questions
-     * @param {Number}   time      time for quiz timer in minutes
-     * @param {Function} callback  called after testing
+     * @param {Object} options contain questions, time, onEnd callback
      * with questions answers as parameter
      * @constructor
      */
-    function Quiz(questions, time, callback) {
+    function Quiz(options) {
+        var questions = options.questions;
+        var time = options.time;
+        var onEnd = options.onEnd;
+
         var quizNavigator = new QuizNavigator(questions);
-        var docManipulator = new DocumentManipulator();
+        var quizView = new QuizView();
         var quizElements;
         var timer;
 
@@ -24,7 +26,7 @@ var QuizUtil = (function() {
          * Loads quiz DOM and bind handlers
          */
         this.loadQuiz = function() {
-            quizElements = docManipulator.loadQuizDOM(questions.length);
+            quizElements = quizView.loadQuizDOM(questions.length);
             bindHandlers();
             initTimer();
         };
@@ -33,8 +35,8 @@ var QuizUtil = (function() {
          * Starts quiz timer and loads first question
          */
         this.startQuiz = function() {
-            docManipulator.setActiveQuestion(0, 'add');
-            docManipulator.loadQuestion(quizNavigator.getCurrent());
+            quizView.setActiveQuestion(0, 'add');
+            quizView.loadQuestion(quizNavigator.getCurrent());
             timer.start();
         };
 
@@ -66,7 +68,7 @@ var QuizUtil = (function() {
 
             return {
                 answeredCorrect: answeredCorrect,
-                questionElements: docManipulator.renderResultStats(questions, answers)
+                questionElements: quizView.renderResultStats(questions, answers)
             }
         };
 
@@ -107,13 +109,13 @@ var QuizUtil = (function() {
         }
 
         function moveDecorator(moveFunction) {
-            docManipulator.setActiveQuestion(quizNavigator.getCursor(), 'remove');
+            quizView.setActiveQuestion(quizNavigator.getCursor(), 'remove');
 
             var args = Array.prototype.slice.call(arguments, 1);
             var success = moveFunction.call(quizNavigator, args);
 
-            docManipulator.loadQuestion(quizNavigator.getCurrent());
-            docManipulator.setActiveQuestion(quizNavigator.getCursor(), 'add');
+            quizView.loadQuestion(quizNavigator.getCurrent());
+            quizView.setActiveQuestion(quizNavigator.getCursor(), 'add');
             return success;
         }
 
@@ -137,7 +139,7 @@ var QuizUtil = (function() {
                 case 'single':
                 case 'multiple': {
                     for (var i = 0; i < question.options.length; i++) {
-                        var input = docManipulator.selectInput(i);
+                        var input = quizView.selectInput(i);
                         if (input.checked) {
                             answers.push(question.options[i]);
                         }
@@ -145,7 +147,7 @@ var QuizUtil = (function() {
                     break;
                 }
                 case 'field': {
-                    var input = docManipulator.selectInput();
+                    var input = quizView.selectInput();
                     if (input.value) {
                         answers.push(input.value);
                     }
@@ -155,10 +157,10 @@ var QuizUtil = (function() {
 
             if (answers.length > 0) {
                 question.answers = answers;
-                docManipulator.setAnsweredQuestion(quizNavigator.getCursor(), 'add');
+                quizView.setAnsweredQuestion(quizNavigator.getCursor(), 'add');
             } else {
                 question.answers = null;
-                docManipulator.setAnsweredQuestion(quizNavigator.getCursor(), 'remove');
+                quizView.setAnsweredQuestion(quizNavigator.getCursor(), 'remove');
             }
         }
 
@@ -178,7 +180,7 @@ var QuizUtil = (function() {
 
         function endQuiz() {
             timer.stop();
-            callback(questions);
+            onEnd(questions);
         }
     }
 
@@ -187,7 +189,7 @@ var QuizUtil = (function() {
      * Loads DOM objects for quiz if they are ommited
      * and manipulates DOM
      */
-    function DocumentManipulator() {
+    function QuizView() {
 
         var CLASS_NAMES = {
             FORM_CLASS: 'qu-form',

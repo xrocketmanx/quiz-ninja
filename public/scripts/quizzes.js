@@ -1,19 +1,12 @@
 (function() {
     "use strict";
 
-    //INIT
     var quizzesContainer = document.querySelector('.quizzes-list');
     var paginationContainer = document.querySelector('.pagination-container');
     var quizzesController = new QuizzesController(
         new Quizzes(ajaxUtil), new QuizzesView(quizzesContainer, paginationContainer), new ViewOptions(document.forms['view-options']));
-    quizzesController.load();
+    quizzesController.init();
 
-    /**
-     * @param {Quizzes} quizzesDB
-     * @param {QuizzesView} quizzesView
-     * @param {ViewOptions} viewOptions
-     * @constructor
-     */
     function QuizzesController(quizzesDB, quizzesView, viewOptions) {
         var ITEMS_PER_PAGE = 10;
 
@@ -30,7 +23,7 @@
             quizzesView.renderQuizzes(paginator.getItems());
         };
 
-        this.load = function() {
+        this.init = function() {
             var self = this;
             quizzesDB.load(function() {
                 self.renderQuizzes(viewOptions.getViewOptions());
@@ -47,10 +40,11 @@
      * @constructor
      */
     function Quizzes(ajax) {
+        var QUIZZES_PATH = '/quizzes';
         var quizzes = [];
 
         this.load = function(callback) {
-            ajax.getJSON('/quizzes', function(result) {
+            ajax.getJSON(QUIZZES_PATH, function(result) {
                 quizzes = result;
                 callback();
             }, function(error) {
