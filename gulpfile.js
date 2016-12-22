@@ -12,9 +12,7 @@ var paths = (function() {
     var base = "public/";
     var dirs = {
         styles: 'styles',
-        scripts: {
-            'pages': 'pages'
-        },
+        scripts: 'scripts',
         build: 'build',
         img: 'img'
     };
@@ -58,16 +56,15 @@ gulp.task('less', function() {
         .pipe(gulp.dest(paths.get('styles')));
 });
 
-var pages = require('./' + paths.get('pages') + 'config.json');
+var pages = require('./' + paths.get('scripts') + 'config.json');
 gulp.task('js', function() {
     var streams = pages.map(function(page) {
         var deps = page.dependencies.map(function(dep) {
             return paths.get('scripts') + dep;
         });
-        console.log(deps);
         return gulp.src(deps)
             .pipe(concat(page.name + '.js'))
-            .pipe(gulp.dest(paths.get('pages')));
+            .pipe(gulp.dest(paths.get('scripts')));
     });
     return merge(streams);
 });

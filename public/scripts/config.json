@@ -1,0 +1,22 @@
+[
+  {
+    "name": "quiz",
+    "dependencies": [
+      "common/ajax-util.js",
+      "common/error-provider.js",
+      "components/quiz-utility.js",
+      "components/error-notifier.js",
+      "modules/quiz.js"
+    ]
+  },
+  {
+    "name": "quizzes",
+    "dependencies": [
+      "common/ajax-util.js",
+      "common/error-provider.js",
+      "common/paginator.js",
+      "components/error-notifier.js",
+      "modules/quizzes.js"
+    ]
+  }
+]
