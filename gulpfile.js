@@ -4,13 +4,17 @@ var gulp     = require('gulp'),
     cleancss = require('gulp-clean-css'),
     less     = require('gulp-less'),
     imagemin = require('gulp-imagemin'),
-    plumber  = require('gulp-plumber');
+    plumber  = require('gulp-plumber'),
+    concat   = require('gulp-concat'),
+    merge    = require('merge-stream');
 
 var paths = (function() {
     var base = "public/";
     var dirs = {
         styles: 'styles',
-        scripts: 'scripts',
+        scripts: {
+            'pages': 'pages'
+        },
         build: 'build',
         img: 'img'
     };
@@ -54,12 +58,26 @@ gulp.task('less', function() {
         .pipe(gulp.dest(paths.get('styles')));
 });
 
+var pages = require('./' + paths.get('pages') + 'config.json');
+gulp.task('js', function() {
+    var streams = pages.map(function(page) {
+        var deps = page.dependencies.map(function(dep) {
+            return paths.get('scripts') + dep;
+        });
+        console.log(deps);
+        return gulp.src(deps)
+            .pipe(concat(page.name + '.js'))
+            .pipe(gulp.dest(paths.get('pages')));
+    });
+    return merge(streams);
+});
+
 gulp.task('clean', function() {
     return del.sync(paths.get('build'));
 });
 
-gulp.task('build', ['clean', 'less'], function() {
-    var js = gulp.src(paths.get('scripts') + '*.js')
+gulp.task('build', ['clean', 'less', 'js'], function() {
+    var js = gulp.src(paths.get('scripts') + '**/*.js')
         .pipe(uglify())
         .pipe(gulp.dest(paths.get('build') + 'scripts/'));
     var css = gulp.src(paths.get('styles') + '*.css')
@@ -70,8 +88,9 @@ gulp.task('build', ['clean', 'less'], function() {
         .pipe(gulp.dest(paths.get('build') + 'img/'));
 });
 
-gulp.task('watch', ['less'], function() {
+gulp.task('watch', ['less', 'js'], function() {
     gulp.watch(paths.get('styles') + '**/*.less', ['less']);
+    gulp.watch(paths.get('scripts') + '**/*.js', ['js']);
 });
 
 gulp.task('default', ['watch']);
