@@ -62,6 +62,7 @@
     }
 
     function QuizView(container) {
+        var PROGRESS_COLORS = ['rgb(217,83,79)', 'rgb(224,201,0)', 'rgb(92,184,92)'];
         var startBtn = container.querySelector('#start');
         var quizForm = container.querySelector('.qu-form');
 
@@ -100,7 +101,7 @@
             var progressElement = ProgressBar.render();
             quizForm.appendChild(progressElement);
             var progressBar = new ProgressBar(progressElement);
-            progressBar.show(stats.answeredCorrect * 100 / length, 1000);
+            progressBar.show(stats.answeredCorrect * 100 / length, 1000, PROGRESS_COLORS);
 
             for (var i = 0; i < stats.questionElements.length; i++) {
                 quizForm.appendChild(stats.questionElements[i]);
