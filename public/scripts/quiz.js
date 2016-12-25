@@ -811,7 +811,7 @@ var ProgressBar = (function () {
                 } else {
                     clearInterval(interval);
                     bar.style.width = value + '%';
-                    counter.innerHTML = value + '%';
+                    counter.innerHTML = +value.toFixed(2) + '%';
                 }
             }, timeDelta);
         };
