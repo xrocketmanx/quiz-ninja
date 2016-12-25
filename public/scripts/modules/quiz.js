@@ -89,14 +89,18 @@
 
         this.showResult = function(stats) {
             quizForm.innerHTML = '';
+
             var length = stats.questionElements.length;
             var message = 'Result: '
                 + stats.answeredCorrect + ' of ' + length;
 
-            var result = document.createElement('p');
-            result.className = 'quiz-result';
-            result.appendChild(document.createTextNode(message));
+            var result = renderResultMessage(message);
             quizForm.appendChild(result);
+
+            var progressElement = ProgressBar.render();
+            quizForm.appendChild(progressElement);
+            var progressBar = new ProgressBar(progressElement);
+            progressBar.show(stats.answeredCorrect * 100 / length, 1000);
 
             for (var i = 0; i < stats.questionElements.length; i++) {
                 quizForm.appendChild(stats.questionElements[i]);
@@ -109,6 +113,13 @@
                 callback.apply(this, arguments);
             });
         };
+
+        function renderResultMessage(message) {
+            var result = document.createElement('p');
+            result.className = 'quiz-result';
+            result.appendChild(document.createTextNode(message));
+            return result;
+        }
     }
     
     function ShareView(container) {

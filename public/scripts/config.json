@@ -6,6 +6,7 @@
       "common/error-provider.js",
       "components/quiz-utility.js",
       "components/error-notifier.js",
+      "components/progress-bar.js",
       "modules/quiz.js"
     ]
   },

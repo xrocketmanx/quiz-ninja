@@ -783,6 +783,58 @@ function ErrorNotifier(container, timeout) {
 
 ErrorNotifier.LOADING_ERROR = 'Failed to load';
 
+var ProgressBar = (function () {
+    "use strict";
+
+    function ProgressBar(container) {
+        var COEF = 1000;
+
+        var bar = container.querySelector('.bar');
+        var counter = container.querySelector('.counter');
+
+        this.show = function(value, ms) {
+            value = Math.abs(value) % 101;
+
+            var step = COEF / ms;
+            var timeDelta = ms * step / 100;
+
+            var width = 0;
+            bar.style.width = width;
+            counter.innerHTML = width;
+
+            var interval = setInterval(function() {
+                if (width < value - step) {
+                    width += step;
+
+                    bar.style.width = width + '%';
+                    counter.innerHTML = Math.floor(width) + '%';
+                } else {
+                    clearInterval(interval);
+                    bar.style.width = value + '%';
+                    counter.innerHTML = value + '%';
+                }
+            }, timeDelta);
+        };
+    }
+
+    ProgressBar.render = function() {
+        var barContainer = document.createElement('div');
+        barContainer.classList.add('progress-bar');
+
+        var counter = document.createElement('span');
+        counter.classList.add('counter');
+        barContainer.appendChild(counter);
+
+        var progress = document.createElement('div');
+        progress.classList.add('bar');
+        barContainer.appendChild(progress);
+
+        return barContainer;
+    };
+
+    return ProgressBar;
+})();
+
 (function () {
     "use strict";
 
@@ -874,14 +926,18 @@ ErrorNotifier.LOADING_ERROR = 'Failed to load';
 
         this.showResult = function(stats) {
             quizForm.innerHTML = '';
+
             var length = stats.questionElements.length;
             var message = 'Result: '
                 + stats.answeredCorrect + ' of ' + length;
 
-            var result = document.createElement('p');
-            result.className = 'quiz-result';
-            result.appendChild(document.createTextNode(message));
+            var result = renderResultMessage(message);
             quizForm.appendChild(result);
+
+            var progressElement = ProgressBar.render();
+            quizForm.appendChild(progressElement);
+            var progressBar = new ProgressBar(progressElement);
+            progressBar.show(stats.answeredCorrect * 100 / length, 1000);
 
             for (var i = 0; i < stats.questionElements.length; i++) {
                 quizForm.appendChild(stats.questionElements[i]);
@@ -894,6 +950,13 @@ ErrorNotifier.LOADING_ERROR = 'Failed to load';
                 callback.apply(this, arguments);
             });
         };
+
+        function renderResultMessage(message) {
+            var result = document.createElement('p');
+            result.className = 'quiz-result';
+            result.appendChild(document.createTextNode(message));
+            return result;
+        }
     }
     
     function ShareView(container) {
