@@ -18,19 +18,20 @@ var Paginator = (function(){
         this.getPagination = function(onClick) {
             var pagination = renderPagination();
 
-            var pages = pagination.children;
-            for (var i = 0; i < pages.length; i++) {
-                pages[i].addEventListener('click', function(event) {
-                    event = event || window.event;
+            pagination.addEventListener('click', function(event) {
+                event = event || window.event;
+
+                var anchor = event.target || event.srcElement;
+                if (anchor.tagName === 'A') {
                     if (event.preventDefault) {
                         event.preventDefault();
                     } else {
                         event.returnValue = false;
                     }
-                    page = +this.children[0].getAttribute('href').slice(1);
+                    page = +anchor.getAttribute('href').slice(1);
                     onClick();
-                });
-            }
+                }
+            });
 
             return pagination;
         };
