@@ -1068,6 +1068,9 @@ body {
   margin-left: -58px;
   margin-top: -18.5px;
 }
+.content-wrapper {
+  position: relative;
+}
 .qu-form {
   display: none;
   max-width: 600px;
@@ -1198,9 +1201,6 @@ body {
 }
 .progress-bar {
   margin-bottom: 15px;
-}
-.content-wrapper {
-  position: relative;
 }
 .sharing {
   display: none;
