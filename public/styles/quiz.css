@@ -1139,11 +1139,12 @@ body {
   padding-left: 0;
 }
 .qu-form .qu-options .qu-input-group {
-  padding: 15px 7px;
+  padding: 12px 7px;
   display: block;
 }
 .qu-form .qu-options .qu-input-group label {
   padding: 5px 10px;
+  display: inline-block;
 }
 .qu-form .qu-options .qu-input-group input {
   margin-right: 5px;
