@@ -1,4 +1,6 @@
 var ajaxUtil = (function() {
+    "use strict";
+
     function getJSON(url, onSuccess, onError) {
         var xhr = prepareRequest(url, 'GET', onSuccess, onError);
         xhr.send();
@@ -86,6 +88,8 @@ var ajaxUtil = (function() {
 })();
 
 (function(global, ajax) {
+    "use strict";
+
     global.onerror = function() {
         var error = makeError.apply(null, arguments);
         ajax.sendJSON('/log/error', error, function() {}, function(err) {
@@ -763,6 +767,8 @@ var QuizUtil = (function() {
 })();
 
 function ErrorNotifier(container, timeout) {
+    "use strict";
+
     var messageElement = container.querySelector('message');
     if (!messageElement) {
         messageElement = document.createElement('strong');

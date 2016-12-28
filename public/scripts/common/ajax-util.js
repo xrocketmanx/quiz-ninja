@@ -1,4 +1,6 @@
 var ajaxUtil = (function() {
+    "use strict";
+
     function getJSON(url, onSuccess, onError) {
         var xhr = prepareRequest(url, 'GET', onSuccess, onError);
         xhr.send();

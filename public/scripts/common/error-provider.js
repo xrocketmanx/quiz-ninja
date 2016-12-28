@@ -1,4 +1,6 @@
 (function(global, ajax) {
+    "use strict";
+
     global.onerror = function() {
         var error = makeError.apply(null, arguments);
         ajax.sendJSON('/log/error', error, function() {}, function(err) {

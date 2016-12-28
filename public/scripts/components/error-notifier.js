@@ -1,4 +1,6 @@
 function ErrorNotifier(container, timeout) {
+    "use strict";
+
     var messageElement = container.querySelector('message');
     if (!messageElement) {
         messageElement = document.createElement('strong');
