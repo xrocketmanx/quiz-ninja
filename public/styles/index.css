@@ -962,6 +962,12 @@ body {
   text-transform: uppercase;
 }
 @media only screen and (max-width: 768px) {
+  .panel:first-child {
+    margin-top: 0;
+  }
+  .panel {
+    margin-top: 15px;
+  }
   .panel,
   .info {
     padding-left: 15px;
